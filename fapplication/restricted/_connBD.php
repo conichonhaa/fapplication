@@ -1,7 +1,7 @@
 <?php
 $host = 'localhost';
 $user = 'fapuser';            // utilisateur MySQL dédié
-$pass = '17702571664x';     // mot de passe MySQL
+$pass = 'XXXXXXX';     // mot de passe MySQL
 $db   = 'fapbase';
 
 // adaptation du nom de la base
