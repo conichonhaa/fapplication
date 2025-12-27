@@ -1,0 +1,529 @@
+
+div#divBoard {
+	display: inline-block;
+	vertical-align: top;
+	max-width: 100%;
+}
+div#divBoardTop {
+	border: solid 2px var(--border-color);
+	background-color: var(--fond3-color);
+	border-radius: 20px 20px 0 0;
+	position: sticky;
+	top: 0;
+	z-index: 10;
+	margin-bottom: 0;
+}
+div#divBoardBottom {
+	border: solid 2px var(--border-color);
+	background-color: var(--fond-colorOp);
+	border-radius: 0 0 20px 20px;
+	overflow-y: auto;
+	z-index: 9;
+	margin-top: -4px;
+}
+.board {
+	border: solid 2px var(--border-color);
+	box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important;
+	width: 700px;
+	position: relative;
+	max-width: 100%;
+	display: block;
+	text-align: left;
+	color: var(--textBoard-color);
+	overflow: hidden;
+	vertical-align: top;
+}
+.boardSplit {
+	display: inline-block;
+}
+.margeEnd {
+	height: 3em;
+}
+
+
+
+div#divBeast {
+	width: 300px;
+	margin-top: 4em;
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	padding-bottom: 0;
+}
+.imgBeast {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index:0;
+	width: 100%;
+	border-radius: 10px;
+	border: solid 2px var(--border-color);
+}
+.imgBeastSpace {
+	width: 100%;
+	opacity: 0;
+	border-radius: 10px;
+}
+.nameBeastBloc {
+	position: absolute;
+	top: -2.5em;
+	left: 0;
+	right: 0;
+	text-align: center;
+}
+.nameBeastBlocElt {
+	border-radius: 10px;
+	border: solid 2px var(--border-color);
+	margin: 0.1em;
+	padding: 0.5em;
+	padding-bottom: 0.1em;
+	display: inline-block;
+	background-color: var(--fond-colorOp);
+	color: var(--textBoard-color);
+}
+.nameBeastImg {
+	height: 1.5em;
+	display: inline-block;
+	vertical-align: middle;
+}
+.nameBeastText {
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: 0.5em;
+}
+.nameBeastClose {
+	height: 1em;
+	margin-left: 1em;
+	cursor: pointer;
+	display: inline-block;
+	vertical-align: middle;
+}
+.divBeastNone {
+	display: none;
+}
+.divBeast {
+	display: none;
+}
+@media (min-width: 1100px) {
+	.divBeast {
+		display: block;
+	}
+}
+
+
+div#divLogs {
+	display: block;
+}
+div#divLogsImg {
+	background-color: var(--border-color);
+	position: fixed;
+	top: 0;
+	right: 0;
+	height: 25px;
+	width: 25px;
+}
+img#imgLogs {
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 100%;
+	cursor: pointer;
+}
+div#divLogsContent {
+	background-color: var(--border-color);
+	position: fixed;
+	top: 25px;
+	bottom: 0;
+	right: 0;
+	width: 200px;
+	text-align: center;
+	overflow: hidden;
+	overflow-y: scroll;
+	z-index: 5;
+	font-size: 70%;
+	padding-bottom: 5em;
+}
+
+
+.boardInfo {
+	border-color: var(--border-color);
+	display: inline-block;
+	border-style: inset;
+	padding: 0.1em;
+	text-align: right;
+	border-radius: 10px;
+	position: absolute;
+	top: 0px;
+	border-bottom-style: ridge;
+	height: 3em;
+}
+.boardInfoStock {
+	right: 0px;
+	z-index:11;
+	border-radius: 0px 20px 0px 0px;
+	background-color: var(--fond-color);
+	cursor:pointer;
+}
+.imgStock {
+	height: 3em;
+}
+
+.boardInfoStockView {
+	display: inline-block;
+}
+.boardInfoStockHide {
+	display: none;
+}
+.boardInfoStockCard {
+	height:2.8em;
+}
+.boardInfoUser {
+	z-index:10;
+	left: 0px;
+	border-radius: 20px 0px 0px 0px;
+	background-color: var(--fond-color);
+	cursor:pointer;
+}
+.boardInfoUserAvatar {
+	height: 2.5em;
+	margin: 0.2em;
+	vertical-align: middle;
+	border-radius: 10px 0 0 0;
+}
+.boardInfoUserName {
+	margin-left: 0.5em;
+	margin-right: 0.5em;
+	vertical-align: middle;
+	display: inline-block;
+	color: var(--light-color);
+	font-weight: bold;
+	white-space: nowrap;
+	text-overflow: ellipsis; 
+	overflow: hidden;
+	max-width: 200px;
+}
+
+.boardTop {
+	padding: 0.2em;
+	height: 1em; 
+	font-size:250%;
+	font-family: shlop;
+	text-align: center;
+	border-radius: 20px 20px 0 0;
+	color: var(--light-color);
+}
+
+div#divMyHand {
+	position: relative;
+}
+.boardMyDeckElt {
+	display: inline-block;
+	vertical-align: middle;
+}
+.boardAllDeck {
+	position: relative;
+}
+.boardDeckMy {
+	max-width
+	position: relative;
+}
+.boardDeckOtehers {
+	overflow-y: auto;
+	position: relative;
+}
+.boardDeck {
+	border-color: var(--border-color);
+	border-style: inset;
+	border-bottom-style: ridge;
+	padding: 0.2em;
+}
+.boardDeckElt {
+	display: inline-block;
+	vertical-align: middle;
+}
+.boardEnd {
+	min-height: 1em;
+	border-radius: 0 0 20px 20px;
+	font-size: 80%;
+	padding-left: 0.5em;
+	color: var(--light-color);
+}
+.boardMyDeckImg {
+	height: 3em;
+}
+.boardAllDeckImg {
+	height: 2em;
+	display: block;
+	margin-right: 0.1em;
+}
+.boardAllDeckIcon {
+	height: 1em;
+	margin: 0.1em;
+	margin-bottom: 0.2em;
+	margin-left: 0.4em;
+	vertical-align: middle;
+}
+.boardAllDeckIconText {
+	width: 1em;
+	display: inline-block;
+	font-family: shlop;
+	margin-left: 0.6em;
+}
+.boardSeparator {
+	width: 2em;
+}
+@media (max-width: 400px) {
+	.boardSeparator {
+		width: 1em;
+	}
+	.boardMyDeckImg {
+		height: 2em;
+	}
+	.imgStock {
+		height:2.5em;
+	}
+}
+@media (max-width: 355px) {
+	.boardAllDeckImg {
+		display: inline-block;
+	}
+	.boardSeparator {
+		width: 0em;
+	}
+}
+
+
+
+.imgTakeObject {
+	height: 2em;
+	padding: 0.2em;
+	cursor: pointer;
+	border-style: outset;
+	border-radius: 10px;
+	border-color: var(--border-color);
+	background-color: var(--cadre-color);
+	box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+	display: inline-block;
+	position: relative;
+}
+.imgTakeObject:hover {
+	background-color: var(--hover-color);
+}
+.imgTakeObject:active {
+	border-style: inset;
+	padding-top: 0.1em;
+	padding-left: 0.1em;
+	padding-rifht: 0.3em;
+	padding-bottom: 0.3em;
+	box-shadow: none;
+}
+.imgTakeObjectDisabled {
+	height: 2em;
+	padding: 0.2em;
+	border-style: outset;
+	border-radius: 10px;
+	border-color: var(--border-color);
+	background-color: var(--cadre-color);
+	box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+	opacity: 0.3;
+	display: inline-block;
+}
+
+
+
+.imgClose {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin: 0.2em;
+	height: 1.2em;
+	cursor: pointer;
+}
+.boardAction {
+	padding: 0;
+	border-radius: 20px;
+	box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important;
+	position: relative;
+	text-align: center;
+}
+.boardActionElt {
+	display: inline-block;
+	position: relative;
+	margin: 1px;
+	cursor: pointer;
+	height: 3em;
+	vertical-align: middle;
+}
+.boardActionImgP {
+	position: absolute;
+	border-color: var(--border-color);
+	border-style: outset;
+	height: 100%;
+}
+.boardActionImgA {
+	height: 100%;
+}
+.boardActionSelected {
+	height: 3.5em;
+	margin-top: -0.3em;
+}
+
+
+.boardDicesThrow {
+	display:inline-block;
+	vertical-align: middle;
+	text-align: center;
+	background-color: var(--cadre-color);
+	border-color: var(--border-color);
+	border-style: outset;
+	border-radius: 10px;
+	padding: 0.2em;
+	margin-left: 1em;
+	cursor: pointer;
+	box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.boardDicesThrow:hover {
+	background-color: var(--hover-color);
+}
+.boardDicesThrow:active {
+	border-style: inset;
+	box-shadow: none;
+	padding-top: 0.1em;
+	padding-left: 0.1em;
+	padding-rifht: 0.3em;
+	padding-bottom: 0.3em;
+}
+.boardDicesThrowDisabled {
+	display:inline-block;
+	vertical-align: middle;
+	text-align: center;
+	background-color: var(--cadre-color);
+	border-color: var(--border-color);
+	border-style: outset;
+	border-radius: 10px;
+	padding: 0.2em;
+	margin-left: 1em;
+	box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.boardDicesThrowLaunchDisabled {
+	opacity: 0.3;
+}
+.boardDicesChoose {
+	cursor: pointer;
+	height: 4em;
+	vertical-align: middle;
+	padding-top: 0.3em;
+}
+.boardDicesChoose:active {
+	padding-top: 0em;
+	/* padding-left: -0.1em; */
+	/* padding-rifht: 0.1em; */
+	/* padding-bottom: 0.1em; */
+}
+
+
+.boardInfosBeast {
+	margin-left: 1em;
+}
+
+
+.imgWheelAction {
+	
+}
+.boardMarginDesktop {
+	display: inline-block;
+	width:2em;
+	vertical-align: middle;
+}
+
+
+@media (max-width: 768px) {
+	.boardInfoUserName {	
+		display:none;
+	}
+	.boardInfoStockView {
+		display: none;
+	}
+	.boardInfoStockHide {
+		display: inline-block;
+	}
+	.boardInfosBeast {
+		display: none;
+	}
+	.boardMarginDesktop {
+		display: none;
+	}
+}
+
+
+
+
+.boardAffContainerParent{
+	position:fixed;
+	top: 0px;
+	left: 0px;
+	bottom: 0px;
+	right: 0px;
+	width: 100%;
+	height: 100%;
+	display: table;
+	cursor: not-allowed;
+	background-color: var(--fond-colorOp);
+	z-index: 100;
+}
+.boardAffContainer{
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	display: table-cell;
+	vertical-align: middle;
+	z-index:100;
+	pointer-events:none;
+	z-index: 1;
+}
+.boardAffContainerModifie{
+	pointer-events: auto;
+	background-color: var(--border-color);
+	width: 300px;
+	max-width: 80%;
+	margin: auto;
+	padding: 1em;
+	border-radius : 10px;
+	cursor : default;
+	box-shadow: 2px 2px 5px #aaaaaa, -2px -2px 5px #aaaaaa;
+}
+.boardAffContainerModifieList{
+	display: inline-block;
+	text-align: left;
+}
+.boardAffContainerModifieElt{
+	margin-top: 0.5em;
+}
+.boardAffContainerModifieCaption{
+	display: inline-block;
+	vertical-align: middle;
+}
+
+
+
+
+
+.frontMessage{
+	position:fixed;
+	background-color: var(--border-color);
+	bottom: 0px;
+	left: 0px;
+	width: 100%;
+	z-index: 90;
+	padding: 0.2em;
+	paddingLeft: 1em;
+	paddingRight: 3em;
+	text-align: center;
+	cursor: pointer;
+}
+.frontMessageElt{
+	display: inline-block;
+	vertical-align: middle;
+}
+

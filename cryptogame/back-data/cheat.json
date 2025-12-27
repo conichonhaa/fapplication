@@ -1,0 +1,12 @@
+{
+	"code": "cheat",
+	"litteral": "Mode Triche",
+	"description": "",
+	"src": "",
+	"actions": {
+		"take": {
+			"description": "Voir les piohes",
+			"src": "images/play/dos_de_carte.png"
+		}
+	}
+}

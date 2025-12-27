@@ -1,0 +1,36 @@
+{
+	"code": "bot",
+	"litteral": "Robos",
+	"ai": {
+		"dice": {
+			"litteral": "Dés à lancer",
+			"code": "dice",
+			"coll": "items"
+		},
+		"wheel": {
+			"litteral": "Actions chirurgicales",
+			"code": "wheel",
+			"coll": "items",
+			"frames": "cost"
+		},
+		"behaviour": {
+			"litteral": "Comportement",
+			"code": "bot",
+			"coll": "behaviours"
+		}
+	},
+	"behaviours": {
+		"Combativité": {
+		
+		},
+		"Rapidité": {
+		
+		},
+		"Intelligence": {
+		
+		},
+		"Esprit d'équipe": {
+		
+		}
+	}
+}

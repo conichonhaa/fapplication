@@ -1,0 +1,227 @@
+{
+	"code": "global",
+	"litteral": "Paramètres globaux",
+	"description": "",
+	"src": "",
+	"actions": {
+		"back": {
+			"description": "Retour à la partie",
+			"src": "images/retour_a_la_partie.png"
+		},
+		"bot": {
+			"description": "Paramétrage des robots",
+			"src": "images/param_bot.png"
+		},
+		"box": {
+			"description": "Voir le contenu du jeu",
+			"src": "images/box.png"
+		},
+		"cancel": {
+			"description": "Finalement non",
+			"src": "images/annuler.png"
+		},
+		"fuck": {
+			"description": "J'men fiche",
+			"src": "images/fuck.png"
+		},
+		"home": {
+			"description": "Retour accueil",
+			"src": "images/retour_accueil.png"
+		},
+		"init": {
+			"description": "Créer une partie",
+			"src": "images/creer_une_partie.png"
+		},
+		"join": {
+			"description": "Rejoindre la partie",
+			"src": "images/rejoindre_une_partie.png"
+		},
+		"launch": {
+			"description": "Lancer la partie",
+			"src": "images/lancer_la_partie.png"
+		},
+		"localSetting": {
+			"description": "Parametres personnels",
+			"src": "images/parametres_perso.png"
+		},
+		"lock": {
+			"description": "Vérouiller",
+			"src": "images/locked_not.png",
+			"lock-src": "images/locked.png",
+			"unlock-src": "images/locked_not.png"
+		},
+		"news": {
+			"description": "Flash info",
+			"src": "images/news.png"
+		},
+		"quit": {
+			"description": "Quitter la partie",
+			"src": "images/quitter_une_partie.png"
+		},
+		"reset": {
+			"description": "Valeurs par défaut",
+			"src": "images/reset.png"
+		},
+		"restore": {
+			"description": "Appliquer les paramètres mémorisés",
+			"src": "images/param_restore.png"
+		},
+		"rules-surge": {
+			"description": "Voir le mémo des actions chirurgicales",
+			"src": "images/voir_les_regles_surge.png"
+		},
+		"rules-cave": {
+			"description": "Voir le mémo des actions",
+			"src": "images/voir_les_regles_game.png"
+		},
+		"rules": {
+			"description": "Voir les rèles complètes",
+			"src": "images/voir_les_regles_completes.png"
+		},
+		"save": {
+			"description": "Mémoriser les paramètres",
+			"src": "images/param_save.png"
+		},
+		"see": {
+			"description": "Regarder la partie",
+			"src": "images/regarder_une_partie.png"
+		},
+		"setting": {
+			"description": "Paramétrer la partie",
+			"src": "images/parametres_partie.png"
+		},
+		"site": {
+			"description": "Voir les films du CryptoZooShow",
+			"src": "images/link_movie.png"
+		},
+		"validate": {
+			"description": "Valider",
+			"src": "images/validate.png"
+		}
+	},
+	"items": {
+		"garbage": {
+			"description": "Poubelle à organes",
+			"src": "images/play/poubelle.png"
+		},
+		"trick": {
+			"description": "Pioches Magouilles",
+			"src": "images/trick/trick_crane.png"
+		},
+		"hand": {
+			"description": "Ma main",
+			"src": "images/play/hand.png"
+		},
+		"beast": {
+			"description": "Créature",
+			"src": "images/play/beast.png"
+		},
+		"barre": {
+			"description": "Barrer les icones",
+			"src": "images/barre.png"
+		},
+		"timer": {
+			"description": "Timer",
+			"src": "images/sablier.gif"
+		}
+	},
+	"events" : {
+		"newRound": {
+			"description": "Indiquer le début de chaque manche",
+			"sound": "sounds/bruitage_debut_manche.mp3"
+		},
+		"yourTurn": {
+			"description": "Indiquer quand c'est à son tour",
+			"sound": "sounds/bruitage_a_toi_de_jouer.mp3"
+		},
+		"timerUrge": {
+			"description": "Timout de la cave bientôt atteint",
+			"timer": 10,
+			"sound": "sounds/bruitage_10_s_left.mp3"
+		},
+		"gameWin": {
+			"description": "Jingle à la fin de la partie",
+			"sound": "sounds/bruitage_victoire.mp3"
+		},
+		"gameLoose": {
+			"description": "Jingle à la fin de la partie",
+			"sound": "sounds/bruitage_defaite.mp3"
+		},
+		"trick": {
+			"description": "Une magouille a été jouée",
+			"sound": "sounds/bruitage_magouille.mp3"
+		},
+		"doubleOrgan": {
+			"description": "Les organes tournent",
+			"sound": "sounds/bruitage_fais_tourner.mp3"
+		},
+		"gameCreate": {
+			"description": "Indiquer la création d'une partie",
+			"sound": "sounds/bruitage_creer_une_partie.mp3"
+		}
+	},
+	"params": {
+		"dureeCave": {
+			"description": "Temps pour dés & chrirugie",
+			"value": 40,
+			"unit":"s",
+			"bornes": [5,120]
+		},
+		"dureeSolve": {
+			"description": "Temps pour résoudre ta chrirugie",
+			"value": 15,
+			"unit":"s",
+			"bornes": [5,30]
+		},
+		"dureeTrick": {
+			"description": "Temps pour faire ta magouille",
+			"value": 10,
+			"unit":"s",
+			"bornes": [5,30]
+		},
+		"dureeDiscard": {
+			"description": "Temps pour te défausser",
+			"value": 10,
+			"unit":"s",
+			"bornes": [5,30]
+		},
+		"maxCard": {
+			"description": "Maximum de cartes en main",
+			"value": 4,
+			"bornes": [2,8]
+		},
+		"garbageCollect": {
+			"description": "Nb de cartes récupérables dans la poubelle",
+			"value": 3,
+			"bornes": [1,5]
+		},
+		"resolutionMode": {
+			"description": "Ordre de résolution des chirurgies",
+			"value": "first",
+			"options": ["first","order"]
+		},
+		"nbBots": {
+			"description": "Nombre de robots",
+			"value": 0,
+			"bornes": [0,15]
+		},
+		"tricked": {
+			"description": "Jouer avec les cartes Magouilles",
+			"value": true,
+			"boolean": true
+		},
+		"team": {
+			"description": "Créer des équipes",
+			"value": 0,
+			"bornes": [0,4]
+		},
+		"botToPlayer": {
+			"description": "Autoriser un spectateur à prendre la place d'un robot",
+			"value": true,
+			"boolean": true
+		}
+	},
+	"hidedParams": {
+		"try": false
+	}
+}

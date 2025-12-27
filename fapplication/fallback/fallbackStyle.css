@@ -1,0 +1,135 @@
+html, body {
+	background-color:#FFD0FF;
+	margin:0;
+}
+label {
+	font-weight:normal;
+}
+.bandeau {
+	border-radius: 4px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 1px 5px rgba(0,0,0,.075);
+	height: 1em;
+    padding: 15px 15px;
+    font-size: 120%;
+	background-color:#FFFFFF;
+	color:#5e5e5e;
+	text-shadow: 0 1px 0 rgba(255,255,255,.25);
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+.imgAvatar {
+	margin-right:10px;
+	border-radius:3px;
+	height:120%;
+	max-width:100px;
+}	
+.divEntete {
+	font-size:150%;
+	font-weight:bold;
+	padding:10px;
+	text-align:center;
+}
+.divMessage{
+	text-align:center;
+	font-style:italic;
+}
+.divMessMini{
+	font-size:80%;
+}
+.blocDisplay {
+	display:inline-block;
+}
+.cadre {
+	font-size:150%;
+	width:90%;
+	margin:auto;
+	margin-top:40px;
+	text-align:left;
+	border:3px solid #6B2F6B;
+	border-radius: 10px;
+	padding:20px;
+	position:relative;
+}
+.bottomCadre {
+	margin-bottom:150px;
+}
+@media (max-width: 768px) {
+	.divEntete {
+		font-size:120%;
+		padding:5px;
+	}
+	.divMessage{
+
+	}
+	.cadre {
+		font-size:120%;
+		width:90%;
+		margin:auto;
+		padding:10px;
+		margin-top:10px;
+	}
+	.bottomCadre {
+		margin-bottom:100px;
+	}
+	.blocDisplay {
+		display:block;
+	}
+}
+
+
+div#divFap {
+	font-size:100%;
+	width:90%;
+	margin:auto;
+	margin-top:20px;
+	text-align:center;
+}
+.buttFap {
+	font-size:200%;
+	padding:20px;
+	text-align:center;
+	background-color:#D483D4;
+	color:#6E216E;
+	border: 11px outset #A836A8;
+	border-radius: 10px;
+	cursor:pointer;
+}
+.buttFap:hover {
+	background-color:#EDADED;
+}
+.buttFap:active{
+	border-style: inset;
+}
+.buttFappe {
+	font-size:100%;
+	padding:20px;
+	text-align:center;
+	background-color:#CC89CC;
+	color:#6E216E;
+	border-radius: 10px;
+	cursor:default;
+}
+.imgFap {
+	width:60px;
+	vertical-align: text-bottom;
+}
+.aFap {
+	font-size:200%;
+	color:#6E216E;
+}
+.aFap:hover {
+	font-size:220%;
+	font-weight:bold;
+	color:#6E216E;
+	text-decoration:none;
+}
+
+div#offAlert {
+	background-color:#EDADED;
+	color:#6E216E;
+	padding:10px;
+	margin:20px;
+	margin-top:10px;
+	border-radius: 10px;
+	font-weight:bold;
+	display:none;
+}

@@ -1,0 +1,155 @@
+
+/* fapp button*/
+div#divFap {
+	font-size:100%;
+	width:90%;
+	margin:auto;
+	margin-top:20px;
+	text-align:center;
+}
+.buttFap {
+	font-size:200%;
+	padding:20px;
+	text-align:center;
+	background-color:var(--button-color);
+	color:var(--cadre-color);
+	border: 11px outset var(--buttonBorder-color);
+	border-radius: 10px;
+	cursor:pointer;
+}
+.buttFap:hover {
+	background-color:var(--buttonHover-color);
+}
+.buttFap:active{
+	border-style: inset;
+}
+.buttFappe {
+	font-size:100%;
+	padding:20px;
+	text-align:center;
+	background-color:var(--buttonActive-color);
+	color:var(--cadre-color);
+	border-radius: 10px;
+	cursor:default;
+}
+.imgFap {
+	width:60px;
+	vertical-align: text-bottom;
+}
+.aFap {
+	font-size:200%;
+	color:var(--cadre-color);
+}
+.aFap:hover {
+	font-size:220%;
+	font-weight:bold;
+	color:var(--cadre-color);
+	text-decoration:none;
+}
+
+
+div#offAlert {
+	background-color:var(--fondLight-color);
+	color:var(--cadre-color);
+	padding:10px;
+	margin:20px;
+	margin-top:10px;
+	border-radius: 10px;
+	font-weight:bold;
+	display:none;
+}
+.inputAlert {
+	border-radius:10px;
+	margin-left:20px;
+	vertical-align: middle;
+	background-color:var(--button-color);
+	border-color:var(--fondLight-color);
+	font-weight:bold;
+}
+.inputAlert:hover {
+	background-color:var(--buttonActive-color);
+}
+.inputAlert:active {
+	border-style:inset;
+}
+.inputAlert:focus {
+	outline:none;
+}
+
+/* Chat */
+div#chatText {
+	display: inline-block;
+	width: 800px;
+	max-width: 100%;
+	position: relative;
+}
+div#chatContent {
+	display: block;
+	width: 100%;
+	max-height: 80%;
+	height: 400px;
+	background: var(--fondWhite-color);
+	border-radius:5px; 
+	overflow-y: scroll;
+	border:1px solid #CCC;
+	padding:5px;
+}
+input#chatSaisie {
+	display: block;
+	width: 100%;
+}
+img#imgChatWorld {
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+	height: 35px;
+	cursor: pointer;
+	opacity: 0.8;
+}
+div#chatList {
+	display: inline-block;
+	width: 200px;
+	max-width: 90%;
+	margin-left: 50px;
+	vertical-align: top;
+	font-size: 90%;
+	margin-top: 20px;
+}
+.chatElt {
+	line-height: 1.2em;
+}
+
+@media (max-width: 768px) {
+	div#chatContent {
+		height: 200px;
+	}
+}
+.imgCall {
+	font-size: 40px;
+	color: var(--cadre-color);
+	position: absolute;
+	left: 10px;
+	top: 2px;
+	cursor: pointer;
+	z-index:2;
+}
+.divCall {
+	position: absolute;
+	left: 5px;
+	top: 2px;
+	z-index:3;
+}
+
+
+.buttOld {
+	position:absolute;
+	margin-top:-60px;
+	text-align:center;
+	width:100%;
+}
+@media (max-width: 768px) {
+	.buttOld {
+		margin-top:-35px;
+		font-size:80%;
+	}
+}

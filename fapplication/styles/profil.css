@@ -1,0 +1,41 @@
+.labelPass {
+	width:120px;
+	display:inline-block;
+	text-align:right;
+}
+
+
+.connexion {
+	padding:20px;
+	width:300px;
+	margin:auto;
+	margin-top:20px;
+	text-align:center;
+	background-color:#FF48AE;
+	border:3px solid #BF0026;
+	border-radius: 10px;
+}
+.infoProfil {
+	width:90%;
+}
+
+.titre {
+	font-size:120%;
+}
+.sousTitreU {
+	text-decoration:underline;
+}
+.sousTitre {
+	text-align:left;
+	margin-top:1.5em;
+	margin-bottom:0.2em;
+}
+.contenu {
+	text-align:left;
+	margin-left:20px;
+}
+
+
+.eltProfil {
+	margin-top:10px;
+}

@@ -1,0 +1,14 @@
+CACHE MANIFEST
+# v2?v=488647 
+/fallback/fallbackFap.php?v=488647
+/fallback/fallbackScript.js?v=488647
+/fallback/fallbackStyle.css?v=488647
+/images/dizzy-face.png
+/images/roue.gif
+/_getImg.php?img=3
+
+FALLBACK:
+/ /fallback/fallbackFap.php?v=488647
+
+NETWORK:
+*

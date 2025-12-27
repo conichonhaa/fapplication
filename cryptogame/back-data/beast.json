@@ -1,0 +1,114 @@
+{
+	"code": "beast",
+	"litteral": "Cryptide",
+	"description": "",
+	"src": "images/logo_brenat_interrogation.png",
+	"frame-src": "images/beast/ecrou.png",
+	"bot-src": "images/bot.png",
+	"items": {
+		"Chauve-souris": {
+			"src": "images/beast/br_beast_dessin_chauve_souris.jpg",
+			"description": ""
+		},
+		"Crapaud": {
+			"src": "images/beast/br_beast_dessin_crapaud.jpg",
+			"description": ""
+		},
+		"Tableau": {
+			"src": "images/beast/br_beast_dessin_tableau.jpg",
+			"description": ""
+		},
+		"Groovy Tentaculette": {
+			"src": "images/beast/br_beast_dessin_tentaculette_batterie.jpg",
+			"description": ""
+		},
+		"Tentaculette": {
+			"src": "images/beast/br_beast_film_tentaculette.jpg",
+			"description": ""
+		},
+		"Beau Gosse": {
+			"src": "images/beast/br_beast_film_beau_gosse.jpg",
+			"description": ""
+		},
+		"Mr Moche": {
+			"src": "images/beast/br_beast_film_monsieur_moche.jpg",
+			"description": ""
+		},
+		"Inséminator": {
+			"src": "images/beast/br_beast_film_inseminator.jpg",
+			"description": ""
+		},
+		"Monstrobook": {
+			"src": "images/beast/br_beast_film_monstrobook.jpg",
+			"description": ""
+		},
+		"Mysterious man": {
+			"src": "images/beast/br_beast_film_mysterious_man.jpg",
+			"description": ""
+		},
+		"Complètement marteau": {
+			"src": "images/beast/br_beast_film_newek.jpg",
+			"description": ""
+		}
+	},
+	"dynamic": {
+		"background": {
+			"src": "images/beast/creature_dynamique_0_fond.jpg",
+			"zIndex": 0
+		},
+		"Oeil": {
+			"zIndex": 6,
+			"malus": {
+				"src": "images/beast/creature_dynamique_6_oeil_malus.png"
+			},
+			"bonus": {
+				"src": "images/beast/creature_dynamique_6_oeil_bonus.png"
+			}
+		},
+		"Cerveau": {
+			"zIndex": 4,
+			"malus": {
+				"src": "images/beast/creature_dynamique_4_cerveau_malus.png"
+			},
+			"bonus": {
+				"src": "images/beast/creature_dynamique_4_cerveau_bonus.png"
+			}
+		},
+		"Main": {
+			"zIndex": 5,
+			"malus": {
+				"src": "images/beast/creature_dynamique_5_main_malus.png"
+			},
+			"bonus": {
+				"src": "images/beast/creature_dynamique_5_main_bonus.png"
+			}
+		},
+		"Pied": {
+			"zIndex": 1,
+			"malus": {
+				"src": "images/beast/creature_dynamique_1_pied_malus.png"
+			},
+			"bonus": {
+				"src": "images/beast/creature_dynamique_1_pied_bonus.png"
+			}
+		},
+		"Intestin": {
+			"zIndex": 2,
+			"malus": {
+				"src": "images/beast/creature_dynamique_2_intestin_malus.png"
+			},
+			"bonus": {
+				"src": "images/beast/creature_dynamique_2_intestin_bonus.png"
+			}
+		},
+		"Coeur": {
+			"zIndex": 3,
+			"malus": {
+				"src": "images/beast/creature_dynamique_3_coeur_malus.png"
+			},
+			"bonus": {
+				"src": "images/beast/creature_dynamique_3_coeur_bonus.png"
+			}
+		}
+	}
+}

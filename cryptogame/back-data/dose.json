@@ -1,0 +1,35 @@
+{
+	"code": "dose",
+	"litteral": "Anesthésiant euphorisant",
+	"description": "",
+	"src": "images/play/dose.png",
+	"frame-src": "images/play/cadre_jeton_dose.png",
+	"stock": 20,
+	"shuffle": true,
+	"items": {
+		"No dose": {
+			"value": 0,
+			"src": "",
+			"dice-src": "images/play/de_resultat_dose_0.png",
+			"nb": 2
+		},
+		"Dose": {
+			"value": 1,
+			"src": "",
+			"dice-src": "images/play/de_resultat_dose_1.png",
+			"nb": 3
+		},
+		"Double dose": {
+			"value": 2,
+			"src": "",
+			"dice-src": "images/play/de_resultat_dose_2.png",
+			"nb": 1
+		},
+		"Triple dose": {
+			"value": 3,
+			"src": "",
+			"dice-src": "images/play/de_resultat_dose_3.png",
+			"nb": 0
+		}
+	}
+}

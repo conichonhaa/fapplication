@@ -1,0 +1,119 @@
+{
+	"code": "wheel",
+	"litteral": "Chirurgie",
+	"description": "",
+	"src":"images/play/action_def.png",
+	"frame-src":"images/play/cadre_wheel.png",
+	"items": {
+		"Greffe": {
+			"surge": "Graft",
+			"cost": 1,
+			"target": "me",
+			"benefit": {
+				"player": "target", 
+				"where": "beast"
+			},
+			"description": "",
+			"src": "images/play/wheel_greffe.png"
+		},
+		"Ablation": {
+			"surge": "Removal",
+			"cost": 0,
+			"target": "me",
+			"benefit": {
+				"player": "garbage", 
+				"where": "beast"
+			},
+			"description": "",
+			"src": "images/play/wheel_ablation.png"
+		},
+		"Prélèvement": {
+			"surge": "Prelevment",
+			"cost": 2,
+			"target": "me",
+			"benefit": {
+				"player": "target", 
+				"where": "hand"
+			},
+			"description": "",
+			"src": "images/play/wheel_prelevement.png"
+		},
+		"Don": {
+			"surge": "Gift",
+			"cost": 2,
+			"target": "others",
+			"benefit": {
+				"player": "target", 
+				"where": "beast"
+			},
+			"description": "",
+			"src": "images/play/wheel_don_organe.png"
+		},
+		"Transplantation": {
+			"surge": "Transplant",
+			"cost": 3,
+			"target": "others",
+			"benefit": {
+				"player": "me", 
+				"where": "beast"
+			},
+			"description": "",
+			"src": "images/play/wheel_transplantation.png"
+		},
+		"Substitution": {
+			"surge": "Substitute",
+			"cost": 4,
+			"target": "",
+			"benefit": {
+				"player": "me", 
+				"where": "beast"
+			},
+			"description": "",
+			"src": "images/play/wheel_substitution.png"
+		}
+	},
+	"frames": {
+		"frame-0": {
+			"name": "1 dose",
+			"src": "images/play/cadre_wheel_0.png"
+		},
+		"frame-1": {
+			"name": "1 dose",
+			"src": "images/play/cadre_wheel_1.png"
+		},
+		"frame-2": {
+			"name": "2 doses",
+			"src": "images/play/cadre_wheel_2.png"
+		},
+		"frame-3": {
+			"name": "3 doses",
+			"src": "images/play/cadre_wheel_3.png"
+		},
+		"frame-4": {
+			"name": "4 doses",
+			"src": "images/play/cadre_wheel_4.png"
+		}
+	},
+	"actions": {
+		"take": {
+			"description": "Aller en salle de chirurgie",
+			"src": "images/play/action_surge.png"
+		},
+		"surge": {
+			"description": "J'y vais",
+			"src": "images/play/action_go.png",
+			"sound": "sounds/bruitage_chirugie.mp3"
+		},
+		"fold": {
+			"description": "J'me couche",
+			"src": "images/play/action_je_me_couche.png"
+		},
+		"fail": {
+			"description": "Echec",
+			"src": "images/play/action_fail.png"
+		}
+	}
+}
+
+
+

@@ -1,0 +1,159 @@
+{
+	"code": "trick",
+	"litteral": "Magouille",
+	"description": "",
+	"src": "images/trick/trick_crane.png",
+	"frame-src": "images/trick/trick_cadre.png",
+	"shuffle": true,
+	"items": {
+		"Rejet de la greffe": {
+			"src": "images/trick/trick_rejet_de_la_greffe.png",
+			"description": "Oooups, vos anticorps se révèle trop hargneux et la greffe échoue… votre organe tout beau tout neuf part à la poubelle !",
+			"nb": 2,
+			"surge": "Graft",
+			"action": "cancel",
+			"target": "garbage",
+			"when": {
+				"solve": 1
+			}
+		},
+		"Erreur de livraison": {
+			"src": "images/trick/trick_erreur_de_livraison.png",
+			"description": "Faire appel à des transporteurs bon marché n’était pas une bonne idée, l’organe est livré par négligence à un autre joueur au choix de la personne qui joue cette carte ! Le retour à l’envoyeur est une option possible.",
+			"nb": 2,
+			"surge": "Gift",
+			"action": "cancel",
+			"target": "player",
+			"when": {
+				"solve": 1
+			}
+		},
+		"Rupture de la chaîne du froid": {
+			"src": "images/trick/trick_rupture_chaine_du_froid.png",
+			"description": "Coup de chaud... un aspect suintant ne vous inspire pas confiance, l’organe avarié part à la poubelle illico.",
+			"nb": 2,
+			"surge": "Transplant",
+			"action": "cancel",
+			"target": "garbage",
+			"when": {
+				"solve": 1
+			}
+		},
+		"Flash info": {
+			"src": "images/trick/trick_flash_info.png",
+			"description": "Les scientifiques ont découvert un nouvel organe… mais il ne sert à rien",
+			"nb": 1,
+			"action": null,
+			"when": {
+				"cave": 1
+			}
+		},
+		"Tripoti-tripota": {
+			"src": "images/trick/trick_tripoti.png",
+			"description": "Touche l’organe (de ton choix) de ton voisin. La production décline toute responsabilités.",
+			"nb": 1,
+			"action": null,
+			"when": {
+				"cave": 1
+			}
+		},
+		"Mauvaises odeurs": {
+			"src": "images/trick/trick_mauvaises_odeurs.png",
+			"description": "Tes organes puent et les voisins se plaignent...",
+			"nb": 1,
+			"action": null,
+			"when": {
+				"cave": 1
+			}
+		},
+		"Soirée gala": {
+			"src": "images/trick/trick_soiree_gala.png",
+			"description": "Le « lac des organes » passe au cinéma, tous les cryptides y assistent pour leur plus grand plaisir.",
+			"nb": 1,
+			"action": null,
+			"when": {
+				"cave": 1
+			}
+		},
+		"Ablation collective": {
+			"src": "images/trick/trick_ablation_collective.png",
+			"description": "Un moment de partage et d’amitié ? Rien de plus simple, choisit un type d’organe et toutes les créatures subissent l’ablation de celui-ci… la poubelle se remplit !",
+			"nb": 1,
+			"try": 10,
+			"action": "delete",
+			"target": "organ",
+			"when": {
+				"cave": 1
+			}
+		},
+		"Changement de fournisseur": {
+			"src": "images/trick/trick_changement_fournisseur.png",
+			"description": "Chaque joueur passe sa main à son voisin dans le sens du jeu.",
+			"nb": 1,
+			"action": "rotate",
+			"target": "hand",
+			"when": {
+				"cave": 1
+			}
+		},
+		"Reconditionnement": {
+			"src": "images/trick/trick_reconditionnement.png",
+			"description" :"Prend une carte de ton choix dans la poubelle à organes.",
+			"nb": 1,
+			"action": "stock",
+			"target": "garbage",
+			"when": {
+				"cave": 1
+			}
+		},
+		"Greffe express": {
+			"src": "images/trick/trick_greffe_express.png",
+			"description" :"Fais toi une greffe supplémentaire avant tout le monde.",
+			"nb": 2,
+			"action": "surge",
+			"target": "solve",
+			"surge": "Graft",
+			"when": {
+				"cave": 1
+			}
+		},
+		"Incognito": {
+			"src": "images/trick/trick_incognito.png",
+			"description" :"Ta créature deviens invisible pour les autres joueurs pendant 2 tours.",
+			"nb": 1,
+			"action": "tag",
+			"code": "stealth",
+			"life": 2,
+			"target": "me",
+			"when": {
+				"cave": 1
+			}
+		},
+		"Intouchable": {
+			"src": "images/trick/trick_verrouillage.png",
+			"description" :"Pose un verrou sur l'organe de ton choix, il sera vérouillé jusqu'à la fin de la partie.",
+			"nb": 1,
+			"action": "tag",
+			"code": "lock",
+			"life": 1000,
+			"target": "beast",
+			"when": {
+				"cave": 1
+			}
+		},
+		"Gangrène": {
+			"src": "images/trick/trick_gangrene.png",
+			"description": "A manque d’hygiène flagrant infection assurée… Pose cette carte sur l’organe de ton choix. En fin de manche l’organe part à la poubelle et l’infection se propage à un autre organe de la créature au hasard. Tous les moyens sont bons pour se débarrasser ou refiler de la gangrène : l’infection reste accroché à l’organe lors des actes chirurgicaux (ablation, don, transplantation, substitution). Si la partie s’arrête alors qu’un organe gangrené est encore présent, celui-ci est compté à une valeur -1.",
+			"nb": 1,
+			"action": "tag",
+			"code": "gangrene",
+			"life": 1,
+			"infect": 1,
+			"target": "beast",
+			"when": {
+				"cave": 1
+			}
+		}
+	}
+}
+

@@ -1,0 +1,19 @@
+
+.inputAdmin {
+	width:250px;
+}
+.inputAdminDes {
+	width:450px;
+}
+@media (max-width: 768px) {
+	table,tr,td {
+		display:inline-block;
+	}
+	.inputAdmin {
+		width:100px;
+	}
+	.inputAdminDes {
+		width:100px;
+	}
+}
+

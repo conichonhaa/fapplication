@@ -1,0 +1,133 @@
+div#divSession {
+	background: radial-gradient(closest-side, var(--fond2-colorOp), var(--fond2-colorOp) 60%, var(--fond2-colorTr) 90%, var(--fond2-colorTr));
+}
+.divSession {
+	text-align: center;
+	margin: 0.8em;
+	position: relative;
+}
+.loadComment {
+	font-style: italic;
+	font-size: 80%;
+}
+.loadAlert {
+	font-weight: bold;
+}
+
+.blocContainer {
+	margin: 1em;
+	border-radius: 20px;
+	box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important;
+	padding: 1em;
+}
+
+.paramTitle {
+	font-size: 120%;
+	font-style: normal;
+	text-decoration: underline;
+	margin-bottom: 0.5em;
+}
+.paramContainer {
+	display: inline-block;
+	text-align: left;
+	max-width: 100%;}
+.paramElt {
+	margin-top: 0.5em;
+	max-width: 100%;
+}
+.paramEltDescription {
+	display: inline-block;
+	width: 50em;
+	max-width: 50%;
+	text-align: right;
+	vertical-align: middle;
+}
+.paramEltModifie {
+	display: inline-block;
+	margin-left: 1em;
+	vertical-align: middle;
+	max-width: 8em;
+}
+.paramEltValue {
+	display: inline-block;
+	vertical-align: middle;
+	marhin-left: 0.5em;
+}
+.paramEltUnit {
+	display: inline-block;
+	vertical-align: middle;
+}
+.paramRangeDiv {
+	position: relative;
+	display: inline-block;
+}
+.paramRangeM {
+	position: absolute;
+	top: 0;
+	left: 1em;
+	font-size: 80%;
+}
+.paramRangeP {
+	position: absolute;
+	top: 0;
+	right: 0;
+	font-size: 80%;
+}
+.paramRangeCaption {
+	display: inline-block;
+	vertical-align: middle;
+	text-align: right;
+	width: 8em;
+}
+
+
+.teamBloc {
+	display: inline-block;
+	vertical-align: top;
+	margin: 0.5em;
+	padding: 1em;
+	border: 2px solid #000000;
+	border-radius: 20px;
+	box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important;
+}
+.teamBlocTitle {
+	font-size: 120%;
+	margin-bottom: 0.5em;
+	pointer-events: none;
+}
+.teamBlocColor {
+	display: inline-block;
+	vertical-align: top;
+	margin-left: 0.5em;
+	width: 1em;
+	pointer-events: auto;
+	cursor: pointer;
+	padding: 0;
+	border-radius: 0.5em;
+}
+.teamBlocContent {
+	font-size: 100%;
+}
+.teamBlocElt {
+	border: 1px solid #000000;
+	border-radius: 5px;
+	padding: 0.5em;
+	cursor: pointer;
+	margin: 0.2em;
+	color: var(--textBoard-color);
+	background-color: var(--fond-colorOp);
+}
+.teamBlocEltImg {
+	pointer-events: none;
+	height: 1.5em;
+	display: inline-block;
+	vertical-align: middle;
+}
+.teamBlocEltName {
+	pointer-events: none;
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: 0.5em;
+}
+
+

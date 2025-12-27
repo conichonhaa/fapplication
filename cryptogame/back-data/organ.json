@@ -1,0 +1,73 @@
+{
+	"code": "organ",
+	"litteral": "Organe",
+	"description": "",
+	"src": "images/play/dos_de_carte.png",
+	"nb": 1,
+	"items": {
+		"Oeil": {
+			"description": "",
+			"src": "images/play/organ_oeil.png",
+			"dice-src": "images/play/de_resultat_organe_oeil.png"
+		},
+		"Cerveau": {
+			"description": "",
+			"src": "images/play/organ_cerveau.png",
+			"dice-src": "images/play/de_resultat_organe_cerveau.png"
+		},
+		"Main": {
+			"description": "",
+			"src": "images/play/organ_main.png",
+			"dice-src": "images/play/de_resultat_organe_main.png"
+		},
+		"Pied": {
+			"description": "",
+			"src": "images/play/organ_pied.png",
+			"dice-src": "images/play/de_resultat_organe_pied.png"
+		},
+		"Intestin": {
+			"description": "",
+			"src": "images/play/organ_intestin.png",
+			"dice-src": "images/play/de_resultat_organe_intestin.png"
+		},
+		"Coeur": {
+			"description": "",
+			"src": "images/play/organ_coeur.png",
+			"dice-src": "images/play/de_resultat_organe_coeur.png"
+		}
+	},
+	"frames": {
+		"neutral": {
+			"name": "Black",
+			"nb": 0,
+			"value": 0,
+			"src": "images/play/cadre_black.png"
+		},
+		"malus": {
+			"name": "Red",
+			"nb": 1,
+			"value": -1,
+			"src": "images/play/cadre_red.png"
+		},
+		"bonus": {
+			"name": "Green",
+			"nb": 1,
+			"value": 1,
+			"src": "images/play/cadre_green.png"
+		}
+	},
+	"tags": {
+		"stealth": {
+			"description": "Invisible",
+			"src": "images/play/organ_invisible.png"
+		},
+		"lock": {
+			"description": "Bloqué",
+			"src": "images/play/organ_lock.png"
+		},
+		"gangrene": {
+			"description": "Gangrène",
+			"src": "images/play/organ_gangrene.png"
+		}
+	}
+}

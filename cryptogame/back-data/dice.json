@@ -1,0 +1,31 @@
+{
+	"code": "dice",
+	"litteral": "Dé",
+	"description": "",
+	"src": "images/play/de_modele_vierge.png",
+	"nb": 3,
+	"items": {
+		"dose": {
+			"src": "images/play/de_modele_dose.png",
+			"name": "Dé doses",
+			"action": "Dose",
+			"nb": 3
+		},
+		"organ": {
+			"src": "images/play/de_modele_organe.png",
+			"name": "Dé organes",
+			"action": "Organ",
+			"nb": 3
+		}
+	},
+	"actions": {
+		"take": {
+			"description": "Prendre les dés",
+			"src": "images/play/action_lancer_les_des.png"
+		},
+		"launch": {
+			"description": "Lancer les dés",
+			"sound": "sounds/bruitage_lance_les_des.mp3"
+		}
+	}
+}

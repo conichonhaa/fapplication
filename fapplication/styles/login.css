@@ -1,0 +1,37 @@
+.labelPass {
+	width:100px;
+	display:inline-block;
+	text-align:right;
+}
+.inputPass {
+	width:150px;
+	display:inline-block;
+}
+
+
+.connexion {
+	padding:20px;
+	width:300px;
+	margin:auto;
+	margin-top:20px;
+	text-align:center;
+	background-color:var(--fondLight-color);
+	border:3px solid  var(--buttonBorder-color);
+	border-radius: 10px;
+}
+.infoProfil {
+	width:90%;
+}
+
+.titre {
+	font-size:120%;
+}
+.sousTitre {
+	text-align:left;
+	text-decoration:underline;
+	margin-top:10px;
+}
+.contenu {
+	text-align:left;
+	margin-left:20px;
+}
