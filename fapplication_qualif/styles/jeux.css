@@ -1,0 +1,148 @@
+
+div#divJeux {
+	position: relative;
+}
+
+.divStart {
+	position:absolute;
+	width: 400px;
+	height: 100px;
+	font-size: 150%;
+	font-weight: bold;
+	background-color: #cccccc;
+	border: 5px outset #888888;
+	cursor: pointer;
+	vertical-align: middle;
+	text-align : center;
+	z-index: 10;
+}
+.imgCapacity {
+	height: 20px;
+	vertical-align: middle;
+}
+
+.buyPowerImgDiv {
+	width: 30px;
+	display: inline-block;
+}	
+.buyPowerImg {
+	height: 25px;
+	vertical-align: middle;
+	padding-left: 5px;
+}
+.buyPowerButton {
+	width: 5em;
+}
+
+
+
+/* reseau */
+.divChat {
+	width: 200px;
+	display: inline-block;
+	position: relative;
+}
+.divChatButton {
+	position: absolute;
+	top: 0;
+	background-color: var(--fondMedium-color);
+	cursor: pointer;
+	color: var(--fondWhite-color);
+	font-weight: bold;
+	padding-left: 0.2em;
+	padding-right: 0.2em;
+	opacity: 0.8;
+}
+.divGame {
+	position: relative;
+	width: calc(100% - 220px);
+	display: inline-block;
+	text-align: center;
+	vertical-align: top;
+}
+div#chatContent {
+	display: block;
+	width: 100%;
+	height: 400px;
+	background: var(--fondWhite-color);
+	border-radius:5px; 
+	overflow-y: scroll;
+	border:1px solid #CCC;
+	padding:5px;
+	font-size:80%;
+}
+input#chatSaisie {
+	display: block;
+	width: 100%;
+	font-size:80%;
+}
+img#imgChatWorld {
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+	height: 28px;
+	cursor: pointer;
+	opacity: 0.8;
+}
+@media (max-width: 768px) {
+	.divChat {
+		display: none;
+	}
+	.divChatButton {
+		display: none;
+	}
+	.divGame {
+		width: 100%;
+	}
+}
+
+.imgInfoGame {
+	height: 25px;
+}
+.btnActionGame {
+	height: 20px;
+	cursor: pointer;
+	vertical-align: text-bottom;
+}
+.divInfoGame {
+	display:inline-block;
+	border: 2px solid var(--cadre-color);
+	border-radius: 5px;
+	background-color: var(--fondWhite-color);
+	font-size: 18px;
+	padding: 2px;
+}
+@media (max-width: 768px) {
+	.divInfoGame {
+		font-size: 16px;
+	}
+	.imgInfoGame {
+		height: 20px;
+	}
+}
+.spanInfo {
+	padding-left: 2px;
+	padding-right: 2px;
+	cursor: pointer;
+}
+.spanInfoFreeze {
+	background-color: var(--fondDark-color);
+}
+
+.imgCall {
+	font-size: 40px;
+	color: var(--cadre-color);
+	position: absolute;
+	left: 10px;
+	top: 2px;
+	cursor: pointer;
+	z-index:2;
+}
+.divCall {
+	position: absolute;
+	left: 5px;
+	top: 2px;
+	z-index:3;
+}
+
+	

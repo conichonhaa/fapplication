@@ -30,7 +30,8 @@ function initConnexion() {
 function getData() {
 	getRequest(param.actions['getData']+"?test=toto&test2=tata", function(doc){
 		if (doc) {
-			
+			param.serverData.xmlDoc = doc;
+			recupLocal();
 		}
 	});
 }
@@ -273,7 +274,8 @@ async function loadInit(data, callbackG) {
 				makeBoardButton(d, 'global', 'rules', null, function(f, res){
 					res.launch.img.style.marginLeft = '1em';
 					res.launch.addEventListener('click',function(){
-						window.open('http://gesicht.fr/brenat/cryptogame', 'story');
+						//window.open('https://gesicht.fr/brenat/cryptogame/co/100_module_CryptoGame.html', 'story')
+						window.open('rules/co/100_module_CryptoGame.html', 'story');
 					});
 				});
 				makeBoardButton(d, 'global', 'rules-surge', null, function(f, res){

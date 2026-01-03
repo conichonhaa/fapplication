@@ -1,0 +1,53 @@
+div#divMap {
+	position: relative;
+}
+
+.divFeatClick {
+	background-color:#FFD0FF;
+	font-size : 80%;
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	z-index: 10000;
+	border:3px solid #BF0026;
+	border-radius: 10px;
+	padding: 10px;
+	display: none;
+	max-height: calc(100% - 20px);
+	overflow: auto;
+}
+.divFeatClickItem {
+	cursor: pointer;
+	color: #BF0026;
+}	
+.divFeatClickItem:hover {
+	background-color: #BF0026;
+	color: #FFD0FF;
+}
+.divFeatNoClickItem {
+	font-style: italic;
+	color: #888888;
+}
+
+.buttLoc {
+	z-index: 1000;
+	position: absolute;
+	top: 0px;
+}
+.messLoc {
+	z-index: 1000;
+	position: absolute;
+	bottom: 0px;
+	width: 100%;
+	text-align: center;
+	font-size : 80%;
+	font-weight : bold;
+}
+.messLocDiv {
+	z-index: 1000;
+	position: absolute;
+	bottom: 0px;
+	background-color: #FFD0FF;
+	opacity: 0.6;
+	width: 100%;
+}

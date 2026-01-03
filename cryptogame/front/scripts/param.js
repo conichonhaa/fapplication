@@ -1,6 +1,23 @@
 
 function recupLocal() {
-	getParam('data', function(){
+	var xmlDoc = param.serverData.xmlDoc;
+	if (!xmlDoc) {
+		console.warn('XML non chargé');
+		return;
+	}
+	param.serverData.data = param.serverData.data || {};
+	var dataNodes = xmlDoc.getElementsByTagName('data')[0].children;
+	for(var i=0; i<dataNodes.length; i++){
+		var node = dataNodes[i];
+		var name = node.nodeName;
+		var cdata = node.textContent || node.firstChild.nodeValue;
+		try {
+			param.serverData.data[name] = JSON.parse(cdata);
+		} catch(e){
+			console.error("Erreur parsing JSON pour", name, e);
+			}
+		}
+	if(param.serverData.data.local && param.serverData.data.local.params){
 		var params = param.serverData.data.local.params;
 		for (code in params) {
 			if (code in localStorage) {
@@ -8,9 +25,10 @@ function recupLocal() {
 				if (params[code].boolean) val = (val=='true');
 				if (params[code].bornes) val = parseInt(val);
 				params[code].value = val;
+				}
 			}
 		}
-	}, param.serverData, 'recupLocal');
+	console.log('Données locales chargées:', param.serverData.data);
 }
 function setLocalParam(code, value) {
 	getParam('data', function(){

@@ -1,0 +1,51 @@
+
+.formulaireEscargot {
+	background-color:#FA759B;
+	margin-bottom:10px;
+}
+.formulaireEscargotEntete{
+	background-color:#BF0026;
+	color:#FFD0FF;
+	border-radius: 10px 10px 0 0;
+	margin:-20px;
+	margin-bottom:20px;
+	padding:5px;
+	padding-left:10px;
+	cursor:pointer;
+}
+.formulaireEscargotEnteteCompl{
+	display:inline;
+}
+.formulaireEscargotForm {
+	display:none;
+	padding:10px;
+	padding-left:30px;
+}
+.lanceEscargot {
+	margin-bottom:10px;
+}
+.pisteEscargot {
+	border:0;
+	border-top:1px #000000 solid;
+	border-bottom:1px #000000 solid;
+	border-style:dashed;
+}
+.pisteEscargotMe {
+	background-color:#FAB6FA;
+}
+
+@media (max-width: 768px) {
+	.formulaireEscargotForm {
+		padding:3px;
+		padding-left:10px;
+	}
+	.formulaireEscargotEntete{
+		margin:-10px;
+		margin-bottom:10px;
+		padding:1px;
+		padding-left:5px;
+	}
+	.formulaireEscargotEnteteCompl{
+		display:none;
+	}
+}

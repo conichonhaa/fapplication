@@ -26,8 +26,10 @@ function initWebSocket() {
 		return;
 	}
 	if (param.wsTry>0) {
-		var url = 'ws'+(document.location.protocol=='https:'?'s':'')+'://'+document.location.hostname.replace('php.','')+':'+param.wsPort;
-		if (param.wsServer) url = 'ws'+(document.location.protocol=='https:'?'s':'')+'://'+param.wsServer+':'+param.wsPort;
+		//var url = 'ws'+(document.location.protocol=='https:'?'s':'')+'://'+document.location.hostname.replace('php.','')+':'+param.wsPort;
+		//if (param.wsServer) url = 'ws'+(document.location.protocol=='https:'?'s':'')+'://'+param.wsServer+':'+param.wsPort;
+		var url = 'ws'+(document.location.protocol=='https:'?'s':'')+'://'+document.location.hostname.replace('php.','')+'/wss';
+		if (param.wsServer) url = 'ws'+(document.location.protocol=='https:'?'s':'')+'://'+param.wsServer+'/wss';
 		// console.log(url);
 		param.wsConnection = new WebSocket(url);
 		param.wsConnection.onopen = function () {
@@ -85,6 +87,9 @@ function gameQuit(data) {
 	param.wsConnection.send(makeJson('gameQuit', {}));
 }
 
+function users(data) {
+	console.log('Users connectés:', data);
+}
 
 function makeJson(type, data) {
 	return JSON.stringify({ type: type, data: data });

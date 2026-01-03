@@ -1,0 +1,20 @@
+html, body {
+	--fond-color: #F2BF88;
+	--fondWhite-color: #FCEEDE;
+	--cadre-color: #A15A0E;
+	--fondLight-color: #F0D0AF;
+	--fondMedium-color: #D9A35F;
+	--fondDark-color: #B07F41;
+		
+	--button-color: #D9A35F;
+	--buttonHover-color: #F0D0AF;
+	--buttonActive-color: #C99F71;
+	--buttonBorder-color: #BF813F;
+	
+	--fondCompteurCatchable-color: #D67002;	
+}
+
+
+
+
+

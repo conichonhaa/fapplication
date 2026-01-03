@@ -1,0 +1,26 @@
+.zoomButton {
+	width:30px;
+	height:30px;
+	background-color:#ffffff;
+	margin:2px;
+	vertical-align:middle;
+	cursor:pointer;
+}
+
+.main_ouverte {
+	cursor: url(/openhand.cur), move;
+	cursor: grab;
+	cursor: -moz-grab;
+	cursor: -webkit-grab;
+}
+.main_fermee {
+	cursor: url(/closedhand.cur), move;
+	cursor: grabbing;
+	cursor: -moz-grabbing;
+	cursor: -webkit-grabbing;
+}
+
+.divGraph {
+	margin-top:5px;
+	position:relative;
+}

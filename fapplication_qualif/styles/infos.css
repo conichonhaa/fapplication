@@ -1,0 +1,204 @@
+
+.emploiTitre {
+	font-weight:bold;
+	font-size:110%;
+	margin-top:1em;
+}
+.emploiItem {
+	margin-left:2em;
+	display:list-item;
+}
+.emploiItem2 {
+	font-style:italic;
+}
+.emploiExplique {
+	font-size:80%;
+	margin-left:3em;
+}
+.emploiSepare {
+	width: 200px;
+	max-width:90%;
+	margin-left:2em;
+	border: 1px solid #000000;
+	height:1px;
+	opacity:0.2;
+}	
+
+
+
+.infoTitre {
+	font-size:120%;
+}
+.infoSousTitreU {
+	text-decoration:underline;
+}
+.infoSousTitre {
+	text-align:left;
+	margin-top:1.5em;
+	margin-bottom:0.2em;
+}
+.imgMaxime {
+	width:25px;
+	height:25px;
+	cursor:pointer;
+}
+.imgIconeInfo {
+	height:35px;
+	vertical-align:middle;
+	border-radius: 3px;
+}
+
+
+.herosH {
+	height: 180px;
+}
+.herosW {
+	width: 350px;
+	max-width: 95%;
+}
+.heros {
+	text-align: center;
+	margin: 10px;
+	display: inline-block;
+}	
+.titreXP {
+	font-size: 22px;
+	font-weight: bold;
+}
+.avatarXP {
+	position: relative;	
+	z-index: 3;
+}
+.imgXP {
+	border-radius: 10px 10px 0 0 ;
+}
+.lvlXP {
+	position: absolute;
+	right: 0;
+	bottom: -5px;
+	margin-right: 10px;
+	padding-top: 3px;
+	width: 40px;
+	height: 40px;
+	background-color: var(--fondWhite-color);
+	border: 3px solid var(--cadre-color);
+	border-radius: 20px;
+	font-size: 20px;
+	font-weight: bold;
+	color: var(--cadre-color);
+}
+.exhibXP {
+	position: absolute;
+	right: 0;
+	top: -15px;
+	margin-right: 10px;
+	padding-top: 3px;
+	width: 40px;
+	height: 40px;
+	background-color: var(--fondWhite-color);
+	border: 3px solid var(--fondCompteurCatchable-color);
+	border-radius: 5px;
+	font-size: 20px;
+	font-weight: bold;
+	color: var(--fondCompteurCatchable-color);
+	transform: rotate(45deg);
+}
+.exhibTextXP {
+	transform: rotate(-45deg);
+}
+.barreXP {
+	border: 2px solid var(--cadre-color);
+	position: relative;	
+	border-radius: 5px;
+	height: 20px;
+	z-index: 2;
+}	
+.barreXPfill {
+	position: absolute;
+	background-image: linear-gradient(to bottom, var(--fondMedium-color) 0%, var(--cadre-color) 100%);
+	height: 16px;
+	border-radius: 2px;
+}
+.numXP {
+	font-style:italic;
+	font-size: 18px;
+}
+.powerXP {
+	width: 30px;
+	position: absolute;
+	left: 5px;
+	bottom: -5px;
+}	
+.powerXPfill {
+	position: absolute;
+	bottom: 0;
+	background-image: linear-gradient(to right, #011A69 0%, #3055C9 50%, #011A69 100%);
+	width: 30px;
+	border-radius: 0 0 30px 30px / 0 0 10px 10px;
+}
+.powerXPfilltop {
+	position: absolute;
+	margin-bottom: -5px;
+	background: var(--fond-color);
+	background: linear-gradient(to bottom, #011A69 0%, #3055C9 75%, #3055C9 100%);
+	width: 30px;
+	height: 10px;
+	border-radius: 30px / 10px;
+}
+.powerXPfillnum {
+	position: absolute;
+	margin-bottom: 2px;
+	width: 30px;
+	font-size: 12px;
+	font-weight: bold;
+	color: #011A69;
+}
+.xpInline {
+	display: inline-block;
+	vertical-align: top;
+	margin-left: 5px;
+	position: relative;	
+	top: 0;
+	text-align: center;
+}	
+
+.divGift {
+	margin: 30px;
+	display: inline-block;
+	vertical-align: top;
+}
+.buyPower {
+	margin: 10px;
+	margin-left: 30px;
+	margin-top: 30px;
+	display: inline-block;
+	vertical-align: top;
+}
+.buyPowerButton {
+	width: 5em;
+}
+
+/*coffre*/
+.imgCoffre {
+	height: 100px;
+}
+.infoCoffre {
+	font-size:180%;
+}
+.blocCoffre {
+	margin: 30px;
+	display: inline-block;
+	vertical-align: middle;
+}
+@media (max-width: 768px) {
+	.imgCoffre {
+		height: 30px;
+	}
+	.infoCoffre {
+		font-size:100%;
+	}
+	.blocCoffre {
+		margin: 10px;
+	}
+}
+	

@@ -1,0 +1,17 @@
+
+.blocKaraoke {
+	
+}
+.b-on {
+	font-size: 120%;
+}
+.b-old {
+	opacity: 0.5;
+	font-size: 90%;
+}
+.lettreKaraoke {
+	display: inline-block;
+}
+.l-on {
+	font-weight: bold;
+}

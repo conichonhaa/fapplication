@@ -17,7 +17,7 @@ function init() {
 	addScript("scripts/play.js");
 	addScript("scripts/draw.js");
 	addScript("scripts/team.js");
-	addScript("scripts/param.js", function(){recupLocal();});
+	addScript("scripts/param.js");
 	addScript("scripts/audio.js", function(){initAudio();});
 	
 	addStyle("styles/board.css");

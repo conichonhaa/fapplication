@@ -1,0 +1,505 @@
+Lai:2
+ssez:2.2
+ moi:2.4
+ vous:2.8
+ par:3
+ler:3.2
+ s'il:3.4
+ vous:3.6
+ plait:3.7
+$$
+d'un:4.3
+ p'tit:4.5
+ tra:4.7
+vers:5
+ de:6
+ l'hu:6.2
+ma:6.4
+ni:6.6
+té:6.8
+$$
+Cette:7.1
+ vi:7.3
+laine:7.4
+ ma:7.6
+nie:7.8
+ de:8.1
+ se:8.3
+ mas:8.5
+tur:8.7
+ber:8.9
+ tout:9.2
+ le temps:9.4
+$$
+de:9.8
+ res:10
+ter:10.2
+ toute:10.4
+ sa:10.6
+ vie:10.8
+ un:11.2
+ a:11.4
+do:11.6
+les:11.8
+cent:12
+$$
+Si:12.4
+ comme:12.6
+ nous:12.8
+ les:13
+ hor:13.2
+mones:13.3
+ ont:13.5
+ gri:13.6
+llé:13.7
+ ta:13.8
+ cer:14
+velle:14.2
+$$
+N'aies:15
+ pas:15.2
+ peur:15.4
+ de:15.8
+ chan:16
+ter:16.2
+ cette:16.5
+ ri:17
+tour:17.5
+n:18
+e:18.2
+l:18.4
+l:18.6
+e:19
+$$
+Quand:23
+ c'est:23.3
+ bran:23.5
+lette:23.7
+ c'est:24
+ jour:24.3
+ de:24.6
+ fête:25
+$$
+As:26
+tique:26.3
+ ton:26.7
+ sexe:27.1
+ pour:27.4
+ ton:27.6
+ bien:28.1
+ être:28.3
+$$
+Li:28.6
+bère:28.8
+ la:29
+ pre:29.3
+ssion:29.6
+ de:30
+ tes:30.3
+ p'tits:30.6
+ rous:31
+t:31.2
+o:31.4
+n:31.6
+s:31.8
+$$
+Car:34.1
+ y'a:34.4
+ pas:34.7
+ de mal:35
+ à:35.3
+ se faire:35.7
+ du:36
+ bien:36.4
+$$
+du:37.2
+ mo:37.4
+ment:37.6
+ que:37.9
+ tu:38.1
+ te:38.4
+ casses:38.5
+ pas:38.8
+ le:38.9
+ frein:39
+$$
+et:39.6
+ que:39.9
+ tu:40.2
+ cli:40.5
+ques:40.6
+ sur:40.9
+ la:41.2
+ fap:41.5
+pli:41.8
+c:42.1
+a:42.3
+t:42.5
+i:42.7
+o:42.9
+n:43.2
+$$
+Pé:46.8
+nis,:47
+ Pha:47.4
+llus,:47.6
+ Bâ:48
+ton:48.1
+ de:48.2
+ joie,:48.3
+ Pe:48.8
+tit:49
+ Zob:49.2
+$$
+c'est:49.5
+ tou:49.7
+jours:49.9
+ a:50.2
+mu:50.3
+sant:50.4
+ de:50.6
+ se:50.7
+ se:50.8
+cou:50.9
+er:51
+ la:51.2
+ cho:51.4
+se:51.8
+$$
+toutes:52.2
+ ces:52.3
+ filles:52.4
+ qui:52.9
+ se:53
+ tré:53.1
+moussent:53.2
+ toutes:53.6
+ ces:53.7
+ formes:53.8
+ qui:54.2
+ m'a:54.3
+ffo:54.4
+lent:54.5
+$$
+tous:55.1
+ nos:55.2
+ vices:55.3
+ se:55.6
+ fi:55.7
+nissent:55.8
+ dans:56.2
+ un:56.3
+ feu:56.4
+ d'ar:56.8
+ti:56.9
+fice:57
+$$
+Les:57.7
+ hor:58
+mones:58.3
+ ont:58.7
+ gri:58.9
+llé:59
+ ta:59.1
+ cer:59.3
+velle:59.5
+$$
+Re:60
+joins:60.2
+ moi:60.4
+ pour:60.6
+ chan:60.7
+ter:60.9
+ cette:61.3
+ ri:61.8
+tour:62.3
+n:62.8
+e:63
+l:63.2
+l:63.4
+e:63.6
+$$
+Quand:68
+ c'est:68.3
+ bran:68.5
+lette:68.7
+ c'est:69
+ jour:69.3
+ de:69.6
+ fête:70
+$$
+As:71
+tique:71.3
+ ton:71.7
+ sexe:72.1
+ pour:72.4
+ ton:72.6
+ bien:73.1
+ être:73.3
+$$
+Li:73.6
+bère:73.8
+ la:74
+ pre:74.3
+ssion:74.6
+ de:75
+ tes:75.3
+ p'tits:75.6
+ rous:76
+t:76.2
+o:76.4
+n:76.6
+s:76.8
+$$
+Car:79.1
+ y'a:79.4
+ pas:79.7
+ de mal:80
+ à:80.3
+ se faire:80.7
+ du:81
+ bien:81.4
+$$
+du:82.2
+ mo:82.4
+ment:82.6
+ que:82.9
+ tu:83.1
+ te:83.4
+ casses:83.5
+ pas:83.8
+ le:83.9
+ frein:84
+$$
+et:84.6
+ que:84.9
+ tu:85.2
+ cli:85.5
+ques:85.6
+ sur:85.9
+ la:86.2
+ fap:86.5
+pli:86.8
+c:87.1
+a:87.3
+t:87.5
+i:87.7
+o:87.9
+n:88.2
+$$
+Pas:91.6
+ vu:91.9
+ pas:92.2
+ pris:92.5
+ j'te:92.8
+ fais:92.9
+ ça:93
+ in:93.3
+co:93.4
+nnu:93.5
+$$
+c'est:94.3
+ un:94.4
+ cirque:94.5
+ é:94.9
+ro:95
+tique:95.1
+ sous:95.3
+ mon:95.5
+ cha:95.7
+pi:95.8
+teau:95.9
+$$
+Si:96.5
+ ja:96.7
+mais:96.8
+ tu:97.1
+ te:97.2
+ fais:97.3
+ prendre:97.4
+ à:97.7
+ le:97.9
+ faire:98.1
+ en:98.4
+ so:98.5
+lo:98.6
+$$
+pas:99.6
+ de:99.65
+ pa:99.7
+ni:99.75
+que:99.8
+ a:100.2
+ccuse:100.3
+ donc:100.4
+ -:100.7
+ la:101.1
+ gé:101.3
+né:101.5
+ti:101.7
+que:101.8
+$$
+Si:102.1
+ comme:102.3
+ nous:102.5
+ les:102.7
+ hor:102.9
+mones:103
+ ont:103.2
+ gri:103.4
+llé:103.5
+ ta:103.6
+ cer:103.8
+velle:104
+$$
+N'aies:104.8
+ pas:105
+ peur:105.2
+ de:105.4
+ chan:105.6
+ter:105.8
+ cette:106.1
+ ri:106.6
+tour:107.1
+n:107.6
+e:107.8
+l:108
+l:108.2
+e:108.4
+$$
+Quand:112.9
+ c'est:113.2
+ bran:113.4
+lette:113.6
+ c'est:113.9
+ jour:114.2
+ de:114.5
+ fête:114.9
+$$
+As:115.9
+tique:116.2
+ ton:116.6
+ sexe:117
+ pour:117.3
+ ton:117.5
+ bien:118
+ être:118.2
+$$
+Li:118.5
+bère:118.7
+ la:118.9
+ pre:119.2
+ssion:119.5
+ de:119.9
+ tes:120.2
+ p'tits:120.5
+ rous:120.9
+t:121.1
+o:121.3
+n:121.5
+s:121.7
+$$
+Car:124
+ y'a:124.3
+ pas:124.6
+ de mal:124.9
+ à:125.2
+ se faire:125.6
+ du:125.9
+ bien:126.3
+$$
+du:127.1
+ mo:127.3
+ment:127.5
+ que:127.8
+ tu:128
+ te:128.3
+ casses:128.4
+ pas:128.7
+ le:128.8
+ frein:128.9
+$$
+et:129.5
+ que:129.8
+ tu:130.1
+ cli:130.4
+ques:130.5
+ sur:130.8
+ la:131.1
+ fap:131.4
+pli:131.7
+c:132
+a:132.2
+t:132.4
+i:132.6
+o:132.8
+n:133.1
+$$
+Quand:134.6
+ c'est:134.9
+ bran:135.1
+lette:135.3
+ c'est:135.6
+ jour:135.9
+ de:136.2
+ fête:136.6
+$$
+As:137.6
+tique:137.9
+ ton:138.3
+ sexe:138.7
+ pour:139
+ ton:139.2
+ bien:139.7
+ être:139.9
+$$
+Li:140.2
+bère:140.4
+ la:140.6
+ pre:140.9
+ssion:141.2
+ de:141.6
+ tes:141.9
+ p'tits:142.2
+ rous:142.6
+t:142.8
+o:143
+n:143.2
+s:143.4
+$$
+Car:145.7
+ y'a:146
+ pas:146.3
+ de mal:146.6
+ à:146.9
+ se faire:147.3
+ du:147.6
+ bien:148
+$$
+du:148.8
+ mo:149
+ment:149.2
+ que:149.5
+ tu:149.7
+ te:150
+ casses:150.1
+ pas:150.4
+ le:150.5
+ frein:150.6
+$$
+et:151.2
+ que:151.5
+ tu:151.8
+ cli:152.1
+ques:152.2
+ sur:152.5
+ la:152.8
+ fap:153.1
+pli:153.4
+c:153.7
+a:153.9
+t:154.1
+i:154.3
+o:154.5
+n:154.8
+$$

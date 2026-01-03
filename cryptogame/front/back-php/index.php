@@ -17,9 +17,19 @@ session_destroy();
 
 $xml = "<xml>";
 	$xml .= "<moteur>PHP</moteur>";
+	//$xml .= "<wsPort>1664</wsPort>";
+	//if (strpos($_SERVER['HTTP_HOST'],'cryptogame.brenat-production.fr')!==false)
+	//$xml .= "<wsServer>fap.brenat-production.fr</wsServer>";
+
+	// Configuration spécifique pour cryptogame
+	if (strpos($_SERVER['HTTP_HOST'],'php.cryptogame.brenat-production.fr')!==false) {
+    	$xml .= "<wsPort>6969</wsPort>";
+    	$xml .= "<wsServer>php.cryptogame.brenat-production.fr</wsServer>";
+	} else {
 	$xml .= "<wsPort>1664</wsPort>";
-	if (strpos($_SERVER['HTTP_HOST'],'cryptogame.brenat-production.fr')!==false)
-		$xml .= "<wsServer>fap.brenat-production.fr</wsServer>";
+	$xml .= "<wsServer>fap.brenat-production.fr</wsServer>";
+}
+
 	if ($user)
 		$xml .= "<user>".$user."</user>";
 	if ($username)
