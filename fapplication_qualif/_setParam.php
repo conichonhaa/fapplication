@@ -33,8 +33,11 @@ $xml = "<xml>";
 
 $needReload = false;
 
+// Debug: log all POST data received
+error_log("SETPARAM_DEBUG: POST received = ".print_r($_POST, true));
+
 if (count($_POST)>0) {
-	
+
 	if (isset($_POST['action'])) $xml .= "<action>".str_replace("\\","",$_POST['action'])."</action>";
 	
 	if (isset($_POST['aFappe'])) {
