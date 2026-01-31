@@ -270,6 +270,7 @@ $string .= "<div style='display:none;'>
 	function return_bytes($val) {
 		$val = trim($val);
 		$last = strtolower($val[strlen($val)-1]);
+		$val = (int)$val; // Convert to integer first to avoid PHP 8 warning
 		switch($last) {
 			case 'g':
 				$val *= 1024;
