@@ -155,7 +155,7 @@ class fap {
 			}
 		}
 	}
-	protected function getParamBD() {	
+	protected function getParamBD() {
 		$t_param = array();
 		if ($this->conn) {
 			$sql = "select * from t_parametrage_par ";
@@ -163,6 +163,8 @@ class fap {
 			while ($data = mysql_fetch_array($req)) {
 				$t_param[$data['par_code']] = $data['par_valeur'];
 			}
+			// Debug: log mail_server value read from DB
+			error_log("GETPARAM_DEBUG: mail_server from DB = ".(isset($t_param['mail_server']) ? $t_param['mail_server'] : "NOT SET"));
 			if (isset($t_param['nbj_mdpalea'])) $this->nbjAlea = intval($t_param['nbj_mdpalea']);
 			if (isset($t_param['decfap_age'])) $this->ageDecFap = intval($t_param['decfap_age']);
 			if (isset($t_param['decfap_nb'])) $this->nbDecFap = intval($t_param['decfap_nb']);
