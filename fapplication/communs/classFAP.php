@@ -1300,7 +1300,7 @@ class fap {
 		if ($id) {
 			$cookie = $this->makeCookieLogin($id)."mZyu+GF:d87UC!ù7vg2*u";
 			if ($clef) $key = crypt($cookie,$clef);
-			else  $key = crypt($cookie);
+			else  $key = crypt($cookie,'fA');
 			$key = $id."||".$key;
 		} else {
 			$key = "";

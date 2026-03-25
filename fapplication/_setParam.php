@@ -344,8 +344,11 @@ if (count($_POST)>0) {
 	$lst_param = array('sms_mail','mail_server');
 	foreach ($lst_param as $v) {
 		if (isset($_POST[$v])) {
-			$sql = "update t_parametrage_par set par_valeur='".$_POST[$v]."' where par_code='".$v."'";
-			mysql_query($sql,$fap->conn);
+			// Delete existing and insert new (simpler than UPDATE + check)
+			$sql = "DELETE FROM t_parametrage_par WHERE par_code='".$v."'";
+			mysql_query($sql, $fap->conn);
+			$sql = "INSERT INTO t_parametrage_par (par_code, par_valeur, par_description, tpa_id) VALUES ('".$v."', '".$_POST[$v]."', '', 1)";
+			mysql_query($sql, $fap->conn);
 		}
 	}
 	

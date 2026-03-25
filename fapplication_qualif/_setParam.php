@@ -33,8 +33,11 @@ $xml = "<xml>";
 
 $needReload = false;
 
+// Debug: log all POST data received
+error_log("SETPARAM_DEBUG: POST received = ".print_r($_POST, true));
+
 if (count($_POST)>0) {
-	
+
 	if (isset($_POST['action'])) $xml .= "<action>".str_replace("\\","",$_POST['action'])."</action>";
 	
 	if (isset($_POST['aFappe'])) {
@@ -344,8 +347,13 @@ if (count($_POST)>0) {
 	$lst_param = array('sms_mail','mail_server');
 	foreach ($lst_param as $v) {
 		if (isset($_POST[$v])) {
-			$sql = "update t_parametrage_par set par_valeur='".$_POST[$v]."' where par_code='".$v."'";
-			mysql_query($sql,$fap->conn);
+			// Delete existing and insert new
+			$sql = "DELETE FROM t_parametrage_par WHERE par_code='".$v."'";
+			mysql_query($sql, $fap->conn);
+			$sql = "INSERT INTO t_parametrage_par (par_code, par_valeur, par_description, tpa_id) VALUES ('".$v."', '".$_POST[$v]."', '', 1)";
+			$result = mysql_query($sql, $fap->conn);
+			// Debug - check error log after testing
+			error_log("PARAM_DEBUG: $v=".$_POST[$v]." result=".($result ? "OK" : "FAIL:".mysql_error($fap->conn)));
 		}
 	}
 	
