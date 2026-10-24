@@ -46,20 +46,80 @@ class fap {
 	private $modeDev = null;
 	private $voteDelai = 300;
 
+	// OPTIMISATION: Caches pour éviter les requêtes N+1
+	private $capacityCache = array();
+	private $lastFapActionCache = array();
+	private $usersCache = null;
+
 	
 	public function __construct() {
 		$this->connect();
 		$this->recupSession();
 		if (!$this->id) $this->getCookieConnexion();
 		$this->recupQualifTicket();
-		$this->getParamBD();
+		
+		// OPTIMISATION: Cache des paramètres en session (5 min)
+		$this->getParamBDCached();
+		
 		$this->logGetInfo();
 		$this->logGetDroits();
 		$this->logGetLevel();
-		$this->traceConnexion();
-		//var_dump($this);
-		//if (isset($_GET['debugDev'])) $this->modeDev = 2;
+		
+		// OPTIMISATION: Tracer la connexion moins souvent (1 fois par minute max)
+		$this->traceConnexionOptimized();
 	}
+	
+	/**
+	 * OPTIMISATION: Cache des paramètres en session
+	 */
+	protected function getParamBDCached() {
+		$cacheKey = 'fap_params';
+		$cacheTTL = 300; // 5 minutes
+		
+		if (isset($_SESSION[$cacheKey]) && isset($_SESSION[$cacheKey . '_time'])) {
+			if (time() - $_SESSION[$cacheKey . '_time'] < $cacheTTL) {
+				$this->tparam = $_SESSION[$cacheKey];
+				$this->applyParams();
+				return;
+			}
+		}
+		
+		$this->getParamBD();
+		$_SESSION[$cacheKey] = $this->tparam;
+		$_SESSION[$cacheKey . '_time'] = time();
+	}
+	
+	/**
+	 * Applique les paramètres aux propriétés
+	 */
+	private function applyParams() {
+		$t_param = $this->tparam;
+		if (isset($t_param['nbj_mdpalea'])) $this->nbjAlea = intval($t_param['nbj_mdpalea']);
+		if (isset($t_param['decfap_age'])) $this->ageDecFap = intval($t_param['decfap_age']);
+		if (isset($t_param['decfap_nb'])) $this->nbDecFap = intval($t_param['decfap_nb']);
+		if (isset($t_param['catch_groggy'])) $this->catchGroggy = intval($t_param['catch_groggy']);
+		if (isset($t_param['fap_groggy'])) $this->fapGroggy = intval($t_param['fap_groggy']);
+		if (isset($t_param['nbj_lienactif'])) $this->nbjLienActif = intval($t_param['nbj_lienactif']);
+		if (isset($t_param['vote_delai'])) $this->voteDelai = intval($t_param['vote_delai'])*60;
+	}
+	
+	/**
+	 * OPTIMISATION: Trace la connexion seulement toutes les 60 secondes
+	 */
+	protected function traceConnexionOptimized() {
+		if (!$this->conn || !$this->id) return;
+		
+		$cacheKey = 'fap_last_trace_' . $this->id;
+		$traceInterval = 60;
+		
+		if (isset($_SESSION[$cacheKey]) && (time() - $_SESSION[$cacheKey]) < $traceInterval) {
+			return;
+		}
+		
+		$this->traceConnexion();
+		$_SESSION[$cacheKey] = time();
+	}
+	
 	public function getAppName() {
 		$name = "";
 		$tmp = explode("/",$_SERVER['PHP_SELF']);
@@ -67,8 +127,10 @@ class fap {
 		return $name;
 	}
 	public function getServerName() {
-		$name = ((isset($_SERVER['HTTPS']) and $_SERVER['HTTPS'])?"https://":"http://").$_SERVER['HTTP_HOST'];
-		$name = ((isset($_SERVER['HTTPS']))?"https://":"http://").$_SERVER['HTTP_HOST'];
+		// Derrière le reverse proxy (NPM), HTTPS est terminé en amont : on lit X-Forwarded-Proto
+		$https = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS']!=='off')
+			|| (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && strtolower($_SERVER['HTTP_X_FORWARDED_PROTO'])==='https');
+		$name = ($https?"https://":"http://").$_SERVER['HTTP_HOST'];
 		return $name;
 	}
 	protected function connect() {
@@ -117,8 +179,6 @@ class fap {
                                 } else {
                                 $this->sessKey = crypt($toCrypt, 'fap_legacy_salt');
                                 }
-				//if ($key) $this->sessKey = crypt($toCrypt,$key);
-				//else $this->sessKey = crypt($toCrypt);
 			}
 		}
 	}
@@ -155,7 +215,7 @@ class fap {
 			}
 		}
 	}
-	protected function getParamBD() {
+	protected function getParamBD() {	
 		$t_param = array();
 		if ($this->conn) {
 			$sql = "select * from t_parametrage_par ";
@@ -163,8 +223,8 @@ class fap {
 			while ($data = mysql_fetch_array($req)) {
 				$t_param[$data['par_code']] = $data['par_valeur'];
 			}
-			// Debug: log mail_server value read from DB
-			error_log("GETPARAM_DEBUG: mail_server from DB = ".(isset($t_param['mail_server']) ? $t_param['mail_server'] : "NOT SET"));
+			// Debug - ajoutez cette ligne
+			//error_log("GETPARAM_DEBUG: mail_server = ".(isset($t_param['mail_server']) ? $t_param['mail_server'] : "NOT SET"));
 			if (isset($t_param['nbj_mdpalea'])) $this->nbjAlea = intval($t_param['nbj_mdpalea']);
 			if (isset($t_param['decfap_age'])) $this->ageDecFap = intval($t_param['decfap_age']);
 			if (isset($t_param['decfap_nb'])) $this->nbDecFap = intval($t_param['decfap_nb']);
@@ -293,7 +353,7 @@ class fap {
 	public function getLastFap($id=null,$all=false) {
 		global $avecFapAnnule;
 		$annule = "";
-		if ($avecFapAnnule=='0') $annule = " and (fap_annule is null or fap_annule<>1)";
+		if (isset($avecFapAnnule) && $avecFapAnnule=='0') $annule = " and (fap_annule is null or fap_annule<>1)";
 		if (!$id) $id = $this->id;
 		if ($all) $where = '';
 		else $where = ' WHERE usr_id='.$id.$annule;
@@ -340,7 +400,7 @@ class fap {
 			$sql = 'SELECT * FROM t_connexion_cnx WHERE usr_id='.$id.' order by cnx_datedeb desc limit 1';
 			$req = mysql_query($sql,$this->conn);
 			if ($data = mysql_fetch_array($req)) {					
-				if ($date) $date = min($date,$data['cnx_datedeb']);
+				if ($date) $date = max($date,$data['cnx_datefin']);
 				else $date = $data['cnx_datefin'];
 			}
 			return $date;
@@ -393,7 +453,7 @@ class fap {
 				$sql = "select * from t_parametrage_par where par_code='mdpdev'";
 				$req = mysql_query($sql,$this->conn);
 				if ($data = mysql_fetch_array($req)) {
-					if (crypt($pass,$data['par_valeur'])==$data['par_valeur']) {
+					if (password_verify($pass, $data['par_valeur'])) {
 						$this->modeDev = 2;
 					}
 				}			
@@ -512,15 +572,15 @@ class fap {
 		}
 	}
 	private function CarAleatoire($taille) {
-		$cars="azertyiopqsdfghjklmwxcvbn0123456789*.!:;,.AZERTYUIOPQSDFGHJKLMWXCVBN$+-0123456789azertyiopqsdfghjklmwxcvbn"; //Listes des caractères possibles
+		$cars="azertyiopqsdfghjklmwxcvbn0123456789*.!:;,.AZERTYUIOPQSDFGHJKLMWXCVBN$+-0123456789azertyiopqsdfghjklmwxcvbn";
 		$mdp='';
 		$long=strlen($cars);
-		srand((double)microtime()*1000000); //Initialise le générateur de nombres aléatoires
-		for($i=0;$i<$taille;$i++) $mdp = $mdp.substr($cars,rand(0,$long-1),1);
+		// srand() supprimé : random_int() n'a pas besoin d'initialisation
+		for($i=0;$i<$taille;$i++) $mdp = $mdp.substr($cars,random_int(0,$long-1),1);
 		return $mdp;
 	}
 	private function getTag($id) {
-		$tag = "FAP".crypt($this->CarAleatoire(30).$id.strftime("%Y%m%d%H%M%S",time()))."GO";
+		$tag = "FAP".bin2hex(random_bytes(16))."GO";
 		return $tag;
 	}
 	public function askInitUser($entry) {
@@ -617,6 +677,8 @@ class fap {
 							curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 							curl_setopt($ch,CURLOPT_POST, count($fields));
 							curl_setopt($ch,CURLOPT_POSTFIELDS, $fields_string);
+							curl_setopt($ch, CURLOPT_TIMEOUT, 10);
+							curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
 							$res = curl_exec($ch);
 							curl_close($ch);							
 						} else {						
@@ -658,7 +720,7 @@ class fap {
 		if ($this->isAdmin() and $this->isValideId($id) or $this->isInit and $this->isValideId($id)) {
 			$mdp = $this->CarAleatoire(13);
 			$date = strftime("%Y-%m-%dT%H:%M:%S",time());
-			$sql = "UPDATE t_utilisateurs_usr SET usr_password='".crypt($mdp)."', usr_password_alea='".$date."' WHERE usr_id=".$id;
+			$sql = "UPDATE t_utilisateurs_usr SET usr_password='".password_hash($mdp, PASSWORD_BCRYPT)."', usr_password_alea='".$date."' WHERE usr_id=".$id;
 			mysql_query($sql,$this->conn);
 			return $mdp;
 		}
@@ -831,6 +893,7 @@ class fap {
 						(".$this->id.",'".$code."',".$date.",".$num.")";
 			}	
 			mysql_query($sql,$this->conn);
+			unset($this->capacityCache[$code]);
 			return true;
 		}	
 	}
@@ -838,8 +901,9 @@ class fap {
 		if ($this->id) {
 			if ($this->hasCapacity($code)) {
 				$sql = "update t_capacity_cpt set cpt_num=".$num." where cpt_id=".$this->capacityInfo['cpt'];
+				mysql_query($sql,$this->conn);
+				unset($this->capacityCache[$code]);
 			} 	
-			mysql_query($sql,$this->conn);
 		}	
 	}
 	public function hasCapacity($code,$id=null) {
@@ -860,6 +924,178 @@ class fap {
 			}	
 		}	
 	}
+	
+	// ============================================================
+	// OPTIMISATION: Méthodes avec cache pour éviter les requêtes N+1
+	// ============================================================
+	
+	public function loadAllCapacities($code) {
+    if (isset($this->capacityCache[$code])) {
+        return $this->capacityCache[$code];
+    }
+    
+    $this->capacityCache[$code] = array();
+    
+    if ($this->conn) {
+        $now = strftime("%Y-%m-%dT%H:%M:%S", time());
+        // PHP 8 compatible: use addslashes instead of mysql_real_escape_string
+        $code_escaped = addslashes($code);
+        $sql = "SELECT usr_id, cpt_id, cpt_date, cpt_num, cpt_info 
+                FROM t_capacity_cpt 
+                WHERE cpt_code='" . $code_escaped . "'
+                AND (cpt_date > '" . $now . "' OR cpt_date IS NULL)";
+        $req = mysql_query($sql, $this->conn);
+        
+        while ($data = mysql_fetch_array($req)) {
+            $this->capacityCache[$code][$data['usr_id']] = array(
+                'cpt' => $data['cpt_id'],
+                'date' => $data['cpt_date'],
+                'num' => $data['cpt_num'],
+                'info' => $data['cpt_info']
+            );
+        }
+    }
+    
+    return $this->capacityCache[$code];
+}
+
+	
+	public function hasCapacityCached($code, $id = null) {
+		if (!$id) $id = $this->id;
+		
+		if (!isset($this->capacityCache[$code])) {
+			$this->loadAllCapacities($code);
+		}
+		
+		$this->capacityInfo['code'] = $code;
+		$this->capacityInfo['date'] = null;
+		$this->capacityInfo['num'] = 0;
+		$this->capacityInfo['info'] = null;
+		$this->capacityInfo['cpt'] = null;
+		
+		if (isset($this->capacityCache[$code][$id])) {
+			$cached = $this->capacityCache[$code][$id];
+			$this->capacityInfo['cpt'] = $cached['cpt'];
+			$this->capacityInfo['date'] = $cached['date'];
+			$this->capacityInfo['num'] = $cached['num'];
+			$this->capacityInfo['info'] = $cached['info'];
+			return true;
+		}
+		
+		return false;
+	}
+	
+	public function loadAllLastFapActions() {
+		if (!empty($this->lastFapActionCache)) {
+			return $this->lastFapActionCache;
+		}
+		
+		if ($this->conn) {
+			$sql = "SELECT usr_id, 
+						   MAX(GREATEST(
+							   COALESCE(fap_date, '1900-01-01'),
+							   COALESCE(fap_declare, '1900-01-01'),
+							   COALESCE(fap_offline, '1900-01-01')
+						   )) as last_action
+					FROM t_faplogs_fap 
+					GROUP BY usr_id";
+			$req = mysql_query($sql, $this->conn);
+			
+			while ($data = mysql_fetch_array($req)) {
+				$this->lastFapActionCache[$data['usr_id']] = $data['last_action'];
+			}
+		}
+		
+		return $this->lastFapActionCache;
+	}
+	
+	public function getLastFapActionCached($id = null) {
+		if (!$id) $id = $this->id;
+		
+		if (empty($this->lastFapActionCache)) {
+			$this->loadAllLastFapActions();
+		}
+		
+		return isset($this->lastFapActionCache[$id]) ? $this->lastFapActionCache[$id] : null;
+	}
+	
+	public function getCatchAuthCached($id = null) {
+		if (!$id) $id = $this->id;
+		
+		$lastAction = $this->getLastFapActionCached($id);
+		if (!$lastAction || $lastAction == '1900-01-01') return 0;
+		
+		$x = time() - makeDate($lastAction);
+		$y = max(0, round(-0.002 * $x / 60 + 40)) * 60;
+		return $y;
+	}
+	
+	public function clearCaches() {
+		$this->capacityCache = array();
+		$this->lastFapActionCache = array();
+		$this->usersCache = null;
+	}
+	
+	public function clearLastFapActionCache() {
+		$this->lastFapActionCache = array();
+	}
+	
+	/**
+	 * OPTIMISATION: Charge toutes les activités de tous les utilisateurs en 2 requêtes
+	 * Au lieu de 5 requêtes par utilisateur dans aFappeur-admin.php
+	 */
+	public function loadAllUserActivities() {
+		$activities = array();
+		
+		if (!$this->conn) return $activities;
+		
+		// Requête 1: Première et dernière connexion par utilisateur
+		$sql = "SELECT usr_id, MIN(cnx_datedeb) as first_cnx, MAX(cnx_datefin) as last_cnx 
+				FROM t_connexion_cnx GROUP BY usr_id";
+		$req = mysql_query($sql, $this->conn);
+		while ($data = mysql_fetch_array($req)) {
+			$activities[$data['usr_id']] = array(
+				'first_cnx' => $data['first_cnx'],
+				'last_cnx' => $data['last_cnx'],
+				'first' => $data['first_cnx'],
+				'last' => $data['last_cnx']
+			);
+		}
+		
+		// Requête 2: Premier et dernier fap par utilisateur
+		$sql = "SELECT usr_id, MIN(fap_date) as first_fap, MAX(fap_date) as last_fap 
+				FROM t_faplogs_fap GROUP BY usr_id";
+		$req = mysql_query($sql, $this->conn);
+		while ($data = mysql_fetch_array($req)) {
+			$usrId = $data['usr_id'];
+			if (!isset($activities[$usrId])) {
+				$activities[$usrId] = array(
+					'first' => $data['first_fap'],
+					'last' => $data['last_fap']
+				);
+			} else {
+				if ($data['first_fap'] && (!$activities[$usrId]['first'] || $data['first_fap'] < $activities[$usrId]['first'])) {
+					$activities[$usrId]['first'] = $data['first_fap'];
+				}
+				if ($data['last_fap'] && (!$activities[$usrId]['last'] || $data['last_fap'] > $activities[$usrId]['last'])) {
+					$activities[$usrId]['last'] = $data['last_fap'];
+				}
+			}
+			$activities[$usrId]['first_fap'] = $data['first_fap'];
+			$activities[$usrId]['last_fap'] = $data['last_fap'];
+		}
+		
+		return $activities;
+	}
+	
+	public function ensureInfoLoaded() {
+		if (!isset($this->info) && $this->id) {
+			$this->logGetInfo();
+		}
+	}
+	
+	// ============================================================
+	
 	public function isLoneCapacity($code) {
 		$is = 0;
 		if ($code=='mst-mirror') $is = 43200;
@@ -883,6 +1119,7 @@ class fap {
 		if ($this->conn) {
 			$sql = "delete from t_capacity_cpt where cpt_date<'".strftime("%Y-%m-%dT%H:%M:%S",time())."' and cpt_date is not null";
 			mysql_query($sql,$this->conn);
+			$this->capacityCache = array();
 		}	
 	}	
 	
@@ -929,7 +1166,7 @@ class fap {
 		if ($this->conn and $this->id) {
 			if (!$masque) $masque = substr(strftime("%Y-%m-%dT%H:%M:%S",time()),0,$nb)."%";
 			$sql = "select usr_id, count(*) as sum from t_faplogs_fap where fap_date like '".$masque."' 
-						".($avecFapAnnule?"":"and (fap_annule is null or fap_annule<>1)")."
+						".(isset($avecFapAnnule) && $avecFapAnnule?"":"and (fap_annule is null or fap_annule<>1)")."
 						group by usr_id order by sum desc, max(fap_date) limit ".$rang;
 			$req = mysql_query($sql,$this->conn);
 			while ($data = mysql_fetch_array($req)) {		
@@ -944,7 +1181,7 @@ class fap {
 		if ($this->conn and $this->id) {
 			if (!$masque) $masque = substr(strftime("%Y-%m-%dT%H:%M:%S",time()),0,$nb)."%";
 			$sql = "select count(*) as sum from t_faplogs_fap where fap_date like '".$masque."' 
-						".($avecFapAnnule?"":"and (fap_annule is null or fap_annule<>1)")."
+						".(isset($avecFapAnnule) && $avecFapAnnule?"":"and (fap_annule is null or fap_annule<>1)")."
 						".($all?"":"and usr_id=".$this->id)." order by sum desc limit 1"; 
 			$req = mysql_query($sql,$this->conn);
 			if ($data = mysql_fetch_array($req)) {		
@@ -956,7 +1193,13 @@ class fap {
 	public function getId() {
 		return $this->id;
 	}
+	
 	public function getListUsers() {
+		// OPTIMISATION: Cache
+		if ($this->usersCache !== null) {
+			return $this->usersCache;
+		}
+		
 		$tt = array();
 		if ($this->conn) {
 			$sql = "SELECT * FROM t_utilisateurs_usr order by usr_nom";
@@ -965,6 +1208,8 @@ class fap {
 				$tt[$data['usr_id']] = array('nom'=>$data['usr_nom']);
 			}
 		}
+		
+		$this->usersCache = $tt;
 		return $tt;
 	}
 
@@ -992,7 +1237,7 @@ class fap {
 				$sql = "SELECT * FROM t_utilisateurs_usr WHERE LOWER(usr_nom)='".$nom."'";
 				$req = mysql_query($sql,$this->conn);
 				if ($data = mysql_fetch_array($req)) {									
-					if (crypt($mdp,$data['usr_password'])==$data['usr_password']) {
+					if (password_verify($mdp, $data['usr_password'])) {
 						$tempo = true;
 						if ($data['usr_password_alea']!='') {
 							if ($data['usr_password_alea']<strftime("%Y-%m-%dT%H:%M:%S",time()-$this->nbjAlea*84400)) {
@@ -1028,7 +1273,7 @@ class fap {
 	public function newUser($nom,$mdp) {
 		if ($this->isUserDispo($nom)) {		
 			$sql = "INSERT INTO t_utilisateurs_usr (usr_nom,usr_password) 
-					VALUES ('".str_replace("'","''",$nom)."','".crypt($mdp)."');";
+					VALUES ('".str_replace("'","''",$nom)."','".password_hash($mdp, PASSWORD_BCRYPT)."');";
 			$req = mysql_query($sql,$this->conn);
 			if ($req) {				
 				$id = mysql_insert_id();
@@ -1042,6 +1287,7 @@ class fap {
 				}
 				$sql = "UPDATE t_utilisateurs_usr SET usr_random=".rand()." WHERE usr_id=".$id;
 				mysql_query($sql,$this->conn);
+				$this->usersCache = null;
 			}
 		}
 	}
@@ -1070,6 +1316,7 @@ class fap {
 			mysql_query($sql,$this->conn);
 			$sql = "DELETE FROM t_user_key_usk WHERE usr_id=".$id;
 			mysql_query($sql,$this->conn);
+			$this->usersCache = null;
 		}
 	}
 	public function deleteMe() {
@@ -1088,6 +1335,7 @@ class fap {
 			mysql_query($sql,$this->conn);
 			$sql = "DELETE FROM t_user_key_usk WHERE usr_id=".$this->id;
 			mysql_query($sql,$this->conn);
+			$this->usersCache = null;
 			$this->logout();		
 		}
 	}
@@ -1099,6 +1347,7 @@ class fap {
 					mysql_query($sql,$this->conn);
 					$this->setIdSession();	
 					$this->decPoints(1000);
+					$this->usersCache = null;
 				}		
 			}
 			if (isset($data['pseudo'])) {
@@ -1141,7 +1390,7 @@ class fap {
 				$this->setImgUser($data['image']);
 			}
 			if (isset($data['mdp'])) {
-				$sql = "UPDATE t_utilisateurs_usr SET usr_password='".crypt($data['mdp'])."', usr_password_alea=null WHERE usr_id=".$this->id;
+				$sql = "UPDATE t_utilisateurs_usr SET usr_password='".password_hash($data['mdp'], PASSWORD_BCRYPT)."', usr_password_alea=null WHERE usr_id=".$this->id;
 				mysql_query($sql,$this->conn);
 			}
 			if (isset($data['cookie'])) $this->setResterConnecte($data['cookie']);	
@@ -1196,7 +1445,7 @@ class fap {
 			$req = mysql_query($sql,$this->conn);
 			if ($data = mysql_fetch_array($req)) {				
 				$foreign = $data['usk_appkey'].$data['usk_userkey'].$data['usk_id'].$data['usk_random'];
-				$foreign = crypt($foreign);
+				$foreign = bin2hex(random_bytes(16));
 				$sql = "update t_user_key_usk set usk_foreignkey='".$foreign."' where usk_id=".$usk;
 				mysql_query($sql,$this->conn);
 				return $foreign;
@@ -1301,7 +1550,7 @@ class fap {
 		if ($id) {
 			$cookie = $this->makeCookieLogin($id)."mZyu+GF:d87UC!ù7vg2*u";
 			if ($clef) $key = crypt($cookie,$clef);
-			else  $key = crypt($cookie,'fA');
+			else  $key = crypt($cookie, 'fA');
 			$key = $id."||".$key;
 		} else {
 			$key = "";
@@ -1309,30 +1558,20 @@ class fap {
 		return $key;
 	}
 	private function cryptCookieDev($dev=null,$clef=null) {
-		//if ($dev) {
-			//$cookie = $this->id.$dev."hT6èHOus2fg1jH:65*ùT(+";
-			//if ($clef) $key = crypt($cookie,$clef);
-			//else  $key = crypt($cookie);
-			//$key = $dev."||".$key;
-		//} else {
-			//$key = "";
-		//}
 		if ($dev) {
-        $cookie = $this->id . $dev . "hT6èHOus2fg1jH:65*ùT(+";
-        
-        if ($clef) {
-            // Utilise le salt fourni
-            $key = crypt($cookie, $clef);
-        } else {
-            // Génère un salt fixe basé sur le cookie pour avoir toujours le même hash
-            $salt = '$6$' . substr(md5($cookie), 0, 16) . '$';
-            $key = crypt($cookie, $salt);
-        }
-        
-        $key = $dev . "||" . $key;
-    } else {
-        $key = "";
-    }
+			$cookie = $this->id . $dev . "hT6èHOus2fg1jH:65*ùT(+";
+			
+			if ($clef) {
+				$key = crypt($cookie, $clef);
+			} else {
+				$salt = '$6$' . substr(md5($cookie), 0, 16) . '$';
+				$key = crypt($cookie, $salt);
+			}
+			
+			$key = $dev . "||" . $key;
+		} else {
+			$key = "";
+		}
 		return $key;
 	}
 
@@ -1384,7 +1623,6 @@ class fap {
 	
 	
 	// conversion mois pour la date en francais
-	// fuck qui n'a pas installé le pack français
 	public function convMoisFrancais($m) {
 		$t_mois = array();
 		$t_mois['January'] = 'janvier';
