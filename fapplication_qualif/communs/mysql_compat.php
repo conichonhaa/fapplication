@@ -6,7 +6,16 @@
 
 if (!function_exists('mysql_query')) {
 
+    // Mémorise la dernière connexion utilisée, pour les appels sans $link
+    // (mysql_insert_id() sans argument, comme l'ancienne extension mysql_*)
+    function _mysql_compat_link($link = null) {
+        static $last = null;
+        if ($link instanceof mysqli) $last = $link;
+        return $last;
+    }
+
     function mysql_query($query, $link = null) {
+        $link = _mysql_compat_link($link);
         return mysqli_query($link, $query);
     }
 
@@ -26,24 +35,13 @@ if (!function_exists('mysql_query')) {
         return mysqli_num_rows($result);
     }
 
-   // function mysql_insert_id($link = null) {
-   //     return mysqli_insert_id($link);
-   // }
-   function mysql_insert_id($link = null) {
-    if ($link instanceof mysqli) {
-        return mysqli_insert_id($link);
+    function mysql_insert_id($link = null) {
+        $link = _mysql_compat_link($link);
+        return $link ? mysqli_insert_id($link) : 0;
     }
 
-    global $bp;
-    if (isset($bp->conn) && $bp->conn instanceof mysqli) {
-        return mysqli_insert_id($bp->conn);
-   }
-
-   return 0;
-   }
-
-
     function mysql_select_db($db, $link) {
+        _mysql_compat_link($link);
         return mysqli_select_db($link, $db);
     }
 
